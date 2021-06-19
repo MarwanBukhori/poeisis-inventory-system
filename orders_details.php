@@ -9,7 +9,7 @@ include_once 'orders_details_crud.php';
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>My Motherboard Ordering System : Orders Details</title>
+  <title>Poeisis Animal Shop : Orders Details</title>
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,8 +30,8 @@ include_once 'orders_details_crud.php';
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $stmt = $conn->prepare("SELECT * FROM tbl_orders_a174856, tbl_staffs_a174856_pt2,
         tbl_customers_a174856_pt2 WHERE
-        tbl_orders_a174856.fld_staff_num = tbl_staffs_a174856_pt2.FLD_STAFF_ID AND
-        tbl_orders_a174856.fld_customer_num = tbl_customers_a174856_pt2.FLD_CUST_ID AND
+        tbl_orders_a174856.fld_staff_num = tbl_staffs_a174856_pt2.fld_staff_id AND
+        tbl_orders_a174856.fld_customer_num = tbl_customers_a174856_pt2.fld_cust_id AND
         fld_order_num = :oid");
       $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
       $oid = $_GET['oid'];
@@ -63,11 +63,11 @@ include_once 'orders_details_crud.php';
               </tr>
               <tr>
                 <td><strong>Staff</strong></td>
-                <td><?php echo $readrow['FLD_STAFF_NAME']; ?></td>
+                <td><?php echo $readrow['fld_staff_name']; ?></td>
               </tr>
               <tr>
                 <td><strong>Customer</strong></td>
-                <td><?php echo $readrow['FLD_CUSTOMER_NAME']; ?></td>
+                <td><?php echo $readrow['fld_cust_name']; ?></td>
               </tr>
             </table>
           </div>
@@ -139,7 +139,7 @@ include_once 'orders_details_crud.php';
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               $stmt = $conn->prepare("SELECT * FROM tbl_orders_details_a174856,
                 tbl_products_a174856_pt2 WHERE
-                tbl_orders_details_a174856.fld_product_num = tbl_products_a174856_pt2.FLD_PRODUCT_ID AND
+                tbl_orders_details_a174856.fld_product_num = tbl_products_a174856_pt2.fld_product_id AND
                 fld_order_num = :oid");
               $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
               $oid = $_GET['oid'];
@@ -153,7 +153,7 @@ include_once 'orders_details_crud.php';
               ?>
               <tr>
                 <td><?php echo $detailrow['fld_order_detail_num']; ?></td>
-                <td><?php echo $detailrow['FLD_PRODUCT_NAME']; ?></td>
+                <td><?php echo $detailrow['fld_product_name']; ?></td>
                 <td><?php echo $detailrow['fld_order_detail_quantity']; ?></td>
                 <td>
                   <a href="orders_details.php?delete=<?php echo $detailrow['fld_order_detail_num']; ?>&oid=<?php echo $_GET['oid']; ?>" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs" role="button">Delete</a>
