@@ -106,15 +106,16 @@ if (isset($_GET['edit'])) {
  
   try {
  
-      $stmt = $conn->prepare("SELECT * FROM tbl_products_a174856_pt2 WHERE fld_product_id = :pid");
+    $stmt = $conn->prepare("SELECT * FROM tbl_products_a174856_pt2 WHERE fld_product_id = :pid");
      
-      $stmt->bindParam(':pid', $pid, PDO::PARAM_STR);
+    $stmt->bindParam(':pid', $pid, PDO::PARAM_STR);
        
     $pid = $_GET['edit'];
      
     $stmt->execute();
  
     $editrow = $stmt->fetch(PDO::FETCH_ASSOC);
+    
     }
  
   catch(PDOException $e)
@@ -123,5 +124,9 @@ if (isset($_GET['edit'])) {
   }
 }
  
-  $conn = null;
+$product = $conn->query("SHOW TABLE STATUS LIKE 'tbl_products_a174856_pt2'")->fetch();
+
+$NextID = sprintf("P%03d", $product['Auto_increment']);
+
+$conn = null;
 ?>

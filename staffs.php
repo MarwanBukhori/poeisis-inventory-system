@@ -28,7 +28,7 @@ include_once 'staffs_crud.php';
         <div class="page-header">
           <?php
           if (isset($_GET['edit'])) {
-            echo "<h2>Editing #{$fid}</h2>";
+            echo "<h2>Editing #{$sid}</h2>";
           } else {
             echo "<h2>Create New Staff</h2>";
           }
@@ -43,44 +43,35 @@ include_once 'staffs_crud.php';
           <div class="form-group">
             <label for="staffid" class="col-sm-3 control-label">Staff ID</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="staffid" placeholder="Staff ID" value="<?php echo (isset($_GET['edit']) ? $fid : $NextID); ?>" readonly required>
+              <input type="text" class="form-control" id="staffid" placeholder="Staff ID" value="<?php echo (isset($_GET['edit']) ? $sid : $NextID); ?>" readonly required>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="fullname" class="col-sm-3 control-label">Full Name</label>
+            <label for="fullname" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input name="name" type="text" class="form-control" id="fullname" placeholder="First Name" value="<?php if(isset($_GET['edit'])) echo $editrow['FLD_STAFF_NAME']; ?>" required />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="gender" class="col-sm-3 control-label">Gender</label>
-            <div class="col-sm-9">
-              <div class="radio">
-                <label>
-                  <input name="gender" type="radio" id="gender" value="male" <?php if(isset($_GET['edit'])) if($editrow['FLD_STAFF_GENDER']=="male") echo "checked"; ?> required> Male
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input name="gender" type="radio" id="gender" value="female" <?php if(isset($_GET['edit'])) if($editrow['FLD_STAFF_GENDER']=="female") echo "checked"; ?> required> Female
-                </label>
-              </div>
+              <input name="name" type="text" class="form-control" id="name" placeholder="Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_name']; ?>" required />
             </div>
           </div>
 
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone Number</label>
             <div class="col-sm-9">
-              <input name="phone" type="text" class="form-control" id="phone" placeholder="Phone Number" value="<?php if(isset($_GET['edit'])) echo $editrow['FLD_STAFF_PHONE']; ?>" required />
+              <input name="phone" type="text" class="form-control" id="phone" placeholder="Phone Number" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_phone']; ?>" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="col-sm-3 control-label">Address</label>
+            <div class="col-sm-9">
+              <input name="address" type="text" class="form-control" id="address" placeholder="Address" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_address']; ?>" required />
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
               <?php if (isset($_GET['edit'])) { ?>
-                <input type="hidden" name="oldsid" value="<?php echo $editrow['FLD_STAFF_ID']; ?>">
+                <input type="hidden" name="oldsid" value="<?php echo $editrow['fld_staff_id']; ?>">
                 <button class="btn btn-default" type="submit" name="update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update</button>
               <?php } else { ?>
                 <button class="btn btn-default" type="submit" name="create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create</button>
@@ -102,9 +93,9 @@ include_once 'staffs_crud.php';
         <table class="table table-striped table-bordered">
           <tr>
             <th>Staff ID</th>
-            <th>Full Name</th>
-            <th>Gender</th>
+            <th>Name</th>
             <th>Phone Number</th>
+            <th>Address</th>
             <th></th>
           </tr>
           <?php
@@ -118,7 +109,7 @@ include_once 'staffs_crud.php';
           try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("select * from tbl_staffs_a174652_pt2 LIMIT {$start_from}, {$per_page}");
+            $stmt = $conn->prepare("SELECT * from tbl_staffs_a174856_pt2 LIMIT {$start_from}, {$per_page}");
             $stmt->execute();
             $result = $stmt->fetchAll();
           }
@@ -128,13 +119,13 @@ include_once 'staffs_crud.php';
           foreach($result as $readrow) {
             ?>   
             <tr>
-              <td><?php echo $readrow['FLD_STAFF_ID']; ?></td>
-            <td><?php echo $readrow['FLD_STAFF_NAME']; ?></td>
-            <td><?php echo ucfirst($readrow['FLD_STAFF_GENDER']); ?></td>
-            <td><?php echo $readrow['FLD_STAFF_PHONE']; ?></td>
+            <td><?php echo $readrow['fld_staff_id']; ?></td>
+            <td><?php echo $readrow['fld_staff_name']; ?></td>
+            <td><?php echo $readrow['fld_staff_phone']; ?></td>
+            <td><?php echo $readrow['fld_staff_address']; ?></td>
               <td>
-                <a href="staffs.php?edit=<?php echo $readrow['FLD_STAFF_ID']; ?>" class="btn btn-success btn-xs" role="button"> Edit </a>
-                <a href="staffs.php?delete=<?php echo $readrow['FLD_STAFF_ID']; ?>" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs" role="button">Delete</a>
+                <a href="staffs.php?edit=<?php echo $readrow['fld_staff_id']; ?>" class="btn btn-success btn-xs" role="button"> Edit </a>
+                <a href="staffs.php?delete=<?php echo $readrow['fld_staff_id']; ?>" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs" role="button">Delete</a>
               </td>
             </tr>
           <?php } ?>
@@ -151,7 +142,7 @@ include_once 'staffs_crud.php';
             try {
               $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-              $stmt = $conn->prepare("SELECT * FROM tbl_staffs_a174652_pt2");
+              $stmt = $conn->prepare("SELECT * FROM tbl_staffs_a174856_pt2");
               $stmt->execute();
               $result = $stmt->fetchAll();
               $total_records = count($result);

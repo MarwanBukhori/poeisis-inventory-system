@@ -108,6 +108,10 @@ if (isset($_GET['edit'])) {
   }
 }
  
-  $conn = null;
+  // GET NEXT ID
+$staff = $conn->query("SHOW TABLE STATUS LIKE 'tbl_staffs_a174652_pt2'")->fetch();
+$NextID = sprintf("S%03d", $staff['Auto_increment']);
+
+$conn = null;
  
 ?>
