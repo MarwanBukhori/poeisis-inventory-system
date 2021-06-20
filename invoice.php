@@ -72,10 +72,10 @@ $conn = null;
       </div>
       <div class="col-xs-5 col-xs-offset-2 text-right">
         <div class="panel panel-default">
-          <div align="center" class="panel-heading">
+          <div class="panel-heading">
             <h4>To : <?php echo $readrow['fld_cust_name']; ?></h4>
           </div>
-          <div align="center" class="panel-body" >
+          <div class="panel-body" >
             <p>
               <?php
               //explode() -> breaks a string into an array
