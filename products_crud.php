@@ -124,9 +124,7 @@ if (isset($_GET['edit'])) {
   }
 }
  
-$product = $conn->query("SHOW TABLE STATUS LIKE 'tbl_products_a174856_pt2'")->fetch();
 
-$NextID = sprintf("P%03d", $product['Auto_increment']);
 
 $conn = null;
 ?>

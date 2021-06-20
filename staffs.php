@@ -43,7 +43,7 @@ include_once 'staffs_crud.php';
           <div class="form-group">
             <label for="staffid" class="col-sm-3 control-label">Staff ID</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="staffid" placeholder="Staff ID" value="<?php echo (isset($_GET['edit']) ? $sid : $NextID); ?>" readonly required>
+              <input type="text" class="form-control" id="staffid" placeholder="Staff ID" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_id']; ?>" required>
             </div>
           </div>
 
