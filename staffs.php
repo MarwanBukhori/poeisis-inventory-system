@@ -28,7 +28,7 @@ include_once 'staffs_crud.php';
         <div class="page-header">
           <?php
           if (isset($_GET['edit'])) {
-            echo "<h2>Editing #{$sid}</h2>";
+            echo "<h2>Editing {$sid}</h2>";
           } else {
             echo "<h2>Create New Staff</h2>";
           }
@@ -43,7 +43,9 @@ include_once 'staffs_crud.php';
           <div class="form-group">
             <label for="staffid" class="col-sm-3 control-label">Staff ID</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="staffid" placeholder="Staff ID" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_id']; ?>" required>
+              
+               <!--input name ni penting. Nk decide source data dari form mana-->
+              <input name="sid" type="text" class="form-control" id="staffid" placeholder="Staff ID" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_id']; ?>" required>
             </div>
           </div>
 

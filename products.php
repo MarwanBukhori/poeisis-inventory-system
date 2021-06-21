@@ -30,25 +30,44 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <div class="page-header">
-        <h2>Create New Product</h2>
-      </div>
+
+      <?php
+          if(isset($editrow) && count($editrow) > 0) {
+            echo "<h2>Editing ".$pid."</h2>";
+          } else {
+            echo "<h2>Create New Product</h2>";
+          }
+      ?>
+</div>
+        
+      
     <form action="products.php" method="post" class="form-horizontal">
+    
+      <?php
+          if (isset($_GET['edit']))
+            echo "<input type='hidden' name='pid' value='".$editrow['fld_product_id']."' />";
+      ?>
+      
+      
+      
       <div class="form-group">
-          <label for="productid" class="col-sm-3 control-label">Product ID</label>
+          <label for="productid" class="col-sm-3 control-label">ID</label>
           <div class="col-sm-9">
-          <input name="pid" type="text" class="form-control" id="productid" placeholder="Product ID" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_id']; ?>"  required>
+          <input name="pid" type="text" class="form-control" id="productid" placeholder="ID" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_id']; ?>"  required>
         </div>
         </div>
       <div class="form-group">
           <label for="productname" class="col-sm-3 control-label">Name</label>
           <div class="col-sm-9">
-          <input name="name" id="productname" type="text" class="form-control" placeholder="Product Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_name']; ?>" required>
+          <input name="name" id="productname" type="text" class="form-control" placeholder="Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_name']; ?>" required>
         </div>
         </div>
+
+        <!-- Price -->
         <div class="form-group">
           <label for="productprice" class="col-sm-3 control-label">Price</label>
           <div class="col-sm-9">
-          <input name="price" id="productprice" type="text" class="form-control" placeholder="Product Price" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_price']; ?>" required>
+          <input name="price" id="productprice" type="number" class="form-control" placeholder="Price (RM)" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_price']; ?>" required>
         </div>
         </div>
 
@@ -56,7 +75,7 @@
       <div class="form-group">
           <label for="producttype" class="col-sm-3 control-label">Type</label>
           <div class="col-sm-9">
-          <select name="type" id="producttype" class="form-control" placeholder="Product Type" required>
+          <select name="type" id="producttype" class="form-control" placeholder="Animal Type" required>
             <option value="PET" <?php if(isset($_GET['edit'])) if($editrow['fld_type']=="Pet") echo "selected"; ?>>PET</option>
             <option value="FOOD" <?php if(isset($_GET['edit'])) if($editrow['fld_type']=="Food") echo "selected"; ?>>FOOD</option>
             <option value="SUPPLY" <?php if(isset($_GET['edit'])) if($editrow['fld_type']=="Supply") echo "selected"; ?>>SUPPLY</option>
@@ -68,7 +87,7 @@
       <div class="form-group">
           <label for="productweight" class="col-sm-3 control-label">Weight</label>
           <div class="col-sm-9">
-          <input name="weight" id="productweight" type="text" class="form-control" placeholder="Product Weight" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_weight']; ?>" required>
+          <input name="weight" id="productweight" type="number" class="form-control" placeholder="Weight (g)" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_weight']; ?>" required>
           </div>
       </div>
 
@@ -76,7 +95,7 @@
         <div class="form-group">
         <label for="productorigin" class="col-sm-3 control-label">Origin</label>
           <div class="col-sm-9">
-          <input name="origin" id="productorigin" type="text" class="form-control" placeholder="Product Origin" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_origin']; ?>" required>
+          <input name="origin" id="productorigin" type="text" class="form-control" placeholder="Origin" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_origin']; ?>" required>
           </div>
         </div>  
 
@@ -117,7 +136,7 @@
       <tr>
         <td>Product ID</td>
         <td>Name</td>
-        <td>Price</td>
+        <td>Price (RM)</td>
         <td>Brand</td>
         <td></td>
       </tr>
