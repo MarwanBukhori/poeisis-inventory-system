@@ -59,7 +59,7 @@ include_once 'staffs_crud.php';
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone Number</label>
             <div class="col-sm-9">
-              <input name="phone" type="text" class="form-control" id="phone" placeholder="Phone Number" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_phone']; ?>" required />
+              <input name="phone" type="tel" class="form-control" id="phone" pattern="\+60\d{2}-\d{7}" placeholder="+60##-#######" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_phone']; ?>" required />
             </div>
           </div>
 
