@@ -111,6 +111,11 @@ if (isset($_GET['edit'])) {
   }
 }
  
-  $conn = null;
+ // get next id 
+$lastid = $conn->query("SELECT MAX(fld_cust_id) AS lastid FROM tbl_customers_a174856_pt2")->fetch();
+$lastid_str = implode("",$lastid);
+$nextid = "C". substr($lastid_str, 1,3) +1 ;
+
+$conn = null;
  
 ?>

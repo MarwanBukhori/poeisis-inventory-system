@@ -44,7 +44,7 @@ include_once 'customers_crud.php';
           <div class="form-group">
             <label for="customerid" class="col-sm-3 control-label">Customer ID</label>
             <div class="col-sm-9">
-            <input name="cid" type="text" class="form-control" id="customerid" placeholder="Customer ID" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_cust_id']; ?>" required>
+            <input name="cid" type="text" class="form-control" id="customerid" placeholder="Customer ID" value="<?php echo (isset($_GET['edit']) ? $cid : $nextid); ?>" required readonly>
             </div>
           </div>
 

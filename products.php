@@ -53,7 +53,7 @@
       <div class="form-group">
           <label for="productid" class="col-sm-3 control-label">ID</label>
           <div class="col-sm-9">
-          <input name="pid" type="text" class="form-control" id="productid" placeholder="ID" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_id']; ?>"  required>
+          <input name="pid" type="text" class="form-control" id="productid" placeholder="ID" value="<?php echo (isset($_GET['edit']) ? $pid : $nextid); ?>" required readonly>
         </div>
         </div>
       <div class="form-group">
