@@ -1,16 +1,18 @@
 <?php
  
 include_once 'database.php';
+
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
  
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
  
 //Create
 if (isset($_POST['create'])) {
  
   try {
  
-    $stmt = $conn->prepare("INSERT INTO tbl_orders_a174856(fld_order_num, fld_staff_num,
+    $stmt = $db->prepare("INSERT INTO tbl_orders_a174856(fld_order_num, fld_staff_num,
       fld_customer_num) VALUES(:oid, :sid, :cid)");
    
     $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
@@ -36,7 +38,7 @@ if (isset($_POST['update'])) {
    
   try {
  
-    $stmt = $conn->prepare("UPDATE tbl_orders_a174856 SET fld_staff_num = :sid,
+    $stmt = $db->prepare("UPDATE tbl_orders_a174856 SET fld_staff_num = :sid,
       fld_customer_num = :cid WHERE fld_order_num = :oid");
    
     $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
@@ -63,7 +65,7 @@ if (isset($_GET['delete'])) {
  
   try {
  
-    $stmt = $conn->prepare("DELETE FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
+    $stmt = $db->prepare("DELETE FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
    
     $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
        
@@ -85,7 +87,7 @@ if (isset($_GET['edit'])) {
    
     try {
  
-    $stmt = $conn->prepare("SELECT * FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
+    $stmt = $db->prepare("SELECT * FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
    
     $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
        
@@ -102,5 +104,5 @@ if (isset($_GET['edit'])) {
   }
 }
  
-  $conn = null;
+  $db = null;
 ?>

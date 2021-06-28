@@ -2,15 +2,18 @@
  
 include_once 'database.php';
  
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
+
+
  
 //Create
 if (isset($_POST['create'])) {
  
   try {
  
-    $stmt = $conn->prepare("INSERT INTO tbl_staffs_a174856_pt2(fld_staff_id, fld_staff_name, fld_staff_phone,
+    $stmt = $db->prepare("INSERT INTO tbl_staffs_a174856_pt2(fld_staff_id, fld_staff_name, fld_staff_phone,
       fld_staff_address) VALUES(:sid, :name, :phone, :address)");
    
    $stmt->bindParam(':sid', $sid, PDO::PARAM_STR);
@@ -37,7 +40,7 @@ if (isset($_POST['update'])) {
    
   try {
  
-    $stmt = $conn->prepare("UPDATE tbl_staffs_a174856_pt2 SET
+    $stmt = $db->prepare("UPDATE tbl_staffs_a174856_pt2 SET
     fld_staff_id = :sid, fld_staff_name = :name,
     fld_staff_phone = :phone, fld_staff_address = :address
     WHERE fld_staff_id = :oldsid");
@@ -69,7 +72,7 @@ if (isset($_GET['delete'])) {
  
   try {
  
-    $stmt = $conn->prepare("DELETE FROM tbl_staffs_a174856_pt2 where fld_staff_id = :sid");
+    $stmt = $db->prepare("DELETE FROM tbl_staffs_a174856_pt2 where fld_staff_id = :sid");
    
     $stmt->bindParam(':sid', $sid, PDO::PARAM_STR);
        
@@ -91,7 +94,7 @@ if (isset($_GET['edit'])) {
    
   try {
  
-    $stmt = $conn->prepare("SELECT * FROM tbl_staffs_a174856_pt2 where fld_staff_id = :sid");
+    $stmt = $db->prepare("SELECT * FROM tbl_staffs_a174856_pt2 where fld_staff_id = :sid");
    
     $stmt->bindParam(':sid', $sid, PDO::PARAM_STR);
        
@@ -109,11 +112,11 @@ if (isset($_GET['edit'])) {
 }
  
 // get next id 
-$lastid = $conn->query("SELECT MAX(fld_staff_id) AS lastid FROM tbl_staffs_a174856_pt2")->fetch();
+$lastid = $db->query("SELECT MAX(fld_staff_id) AS lastid FROM tbl_staffs_a174856_pt2")->fetch();
 $lastid_str = implode("",$lastid);
 $nextid = "S". substr($lastid_str, 1,3) +1 ;
 
-$conn = null;
+$db = null;
  
 
 

@@ -1,16 +1,18 @@
 <?php
  
 include_once 'database.php';
+
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
  
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
  
 //Create
 if (isset($_POST['addproduct'])) {
  
   try {
  
-    $stmt = $conn->prepare("INSERT INTO tbl_orders_details_a174856(fld_order_detail_num,
+    $stmt = $db->prepare("INSERT INTO tbl_orders_details_a174856(fld_order_detail_num,
       fld_order_num, fld_product_num, fld_order_detail_quantity) VALUES(:did, :oid,
       :pid, :quantity)");
    
@@ -39,7 +41,7 @@ if (isset($_GET['delete'])) {
  
   try {
  
-    $stmt = $conn->prepare("DELETE FROM tbl_orders_details_a174856 where fld_order_detail_num = :did");
+    $stmt = $db->prepare("DELETE FROM tbl_orders_details_a174856 where fld_order_detail_num = :did");
    
     $stmt->bindParam(':did', $did, PDO::PARAM_STR);
        
