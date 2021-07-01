@@ -162,12 +162,19 @@ include_once 'orders_crud.php';
                 <td><?php echo $orderrow['fld_order_date']; ?></td>
                 <td><?php echo $orderrow['fld_staff_name']; ?></td>
                 <td><?php echo $orderrow['fld_cust_name']; ?></td>
-                <td>
-                  <a href="orders_details.php?oid=<?php echo $orderrow['fld_order_num']; ?>" class="btn btn-warning btn-xs" role="button"> Details </a>
-                  <a href="orders.php?edit=<?php echo $orderrow['fld_order_num']; ?>" class="btn btn-success btn-xs" role="button"> Edit </a>
-                  <a href="orders.php?delete=<?php echo $orderrow['fld_order_num']; ?>" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs" role="button">Delete</a>
-                </td>
-              </tr>
+                <td class="text-center">
+                            <a href="orders_details.php?oid=<?php echo $orderrow['fld_order_num']; ?>"
+                               class="btn btn-warning btn-xs" role="button"> Details </a>
+                            <?php
+                            if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
+                                ?>
+                                <a href="orders.php?edit=<?php echo $orderrow['fld_order_num']; ?>"
+                                   class="btn btn-success btn-xs" role="button"> Edit </a>
+                                <a href="orders.php?delete=<?php echo $orderrow['fld_order_num']; ?>"
+                                   onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs"
+                                   role="button">Delete</a>
+                            <?php } ?>
+                        </td>
             <?php } ?>
 
           </table>

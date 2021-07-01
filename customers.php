@@ -4,6 +4,7 @@ include_once 'customers_crud.php';
 
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +21,14 @@ include_once 'customers_crud.php';
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
+
 <body>
   <?php include_once 'nav_bar.php'; ?>
+
+  <?php
+if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
+    ?>
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -44,46 +51,55 @@ include_once 'customers_crud.php';
           <div class="form-group">
             <label for="customerid" class="col-sm-3 control-label">Customer ID</label>
             <div class="col-sm-9">
-            <input name="cid" type="text" class="form-control" id="customerid" placeholder="Customer ID" value="<?php echo (isset($_GET['edit']) ? $cid : $nextid); ?>" required readonly>
+              <input name="cid" type="text" class="form-control" id="customerid" placeholder="Customer ID"
+                value="<?php echo (isset($_GET['edit']) ? $cid : $nextid); ?>" required readonly>
             </div>
           </div>
 
           <div class="form-group">
             <label for="fullname" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input name="name" type="text" class="form-control" id="name" placeholder="Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_cust_name']; ?>" required />
+              <input name="name" type="text" class="form-control" id="name" placeholder="Name"
+                value="<?php if(isset($_GET['edit'])) echo $editrow['fld_cust_name']; ?>" required />
             </div>
           </div>
 
           <div class="form-group">
             <label for="address" class="col-sm-3 control-label">Address</label>
             <div class="col-sm-9">
-              <textarea name="address" type="text" class="form-control" id="address" placeholder="Address" rows="5" style="resize:none;" required><?php if(isset($_GET['edit'])) echo $editrow['fld_cust_address']; ?></textarea>
+              <textarea name="address" type="text" class="form-control" id="address" placeholder="Address" rows="5"
+                style="resize:none;"
+                required><?php if(isset($_GET['edit'])) echo $editrow['fld_cust_address']; ?></textarea>
             </div>
           </div>
 
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone Number</label>
             <div class="col-sm-9">
-              <input name="phone" type="tel" class="form-control" id="phone" pattern="\+60\d{2}-\d{7}" placeholder="+60##-#######" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_cust_phone']; ?>" required />
+              <input name="phone" type="tel" class="form-control" id="phone" pattern="\+60\d{2}-\d{7}"
+                placeholder="+60##-#######" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_cust_phone']; ?>"
+                required />
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
               <?php if (isset($_GET['edit'])) { ?>
-                <input type="hidden" name="oldcid" value="<?php echo $editrow['fld_cust_id']; ?>">
-                <button class="btn btn-default" type="submit" name="update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update</button>
+              <input type="hidden" name="oldcid" value="<?php echo $editrow['fld_cust_id']; ?>">
+              <button class="btn btn-default" type="submit" name="update"><span class="glyphicon glyphicon-pencil"
+                  aria-hidden="true"></span> Update</button>
               <?php } else { ?>
-                <button class="btn btn-default" type="submit" name="create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create</button>
+              <button class="btn btn-default" type="submit" name="create"><span class="glyphicon glyphicon-plus"
+                  aria-hidden="true"></span> Create</button>
               <?php } ?>
-              <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear</button>
+              <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase"
+                  aria-hidden="true"></span> Clear</button>
             </div>
           </div>
         </form>
       </div>
     </div>
-
+    <?php } ?>
     <hr />
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
@@ -117,17 +133,27 @@ include_once 'customers_crud.php';
             echo "Error: " . $e->getMessage();
           }
           foreach($result as $readrow) {
-            ?>   
-            <tr>
-              <td><?php echo $readrow['fld_cust_id']; ?></td>
-              <td><?php echo $readrow['fld_cust_name']; ?></td>
-              <td><?php echo $readrow['fld_cust_address']; ?></td>
-              <td><?php echo $readrow['fld_cust_phone']; ?></td>
-              <td>
-                <a href="customers.php?edit=<?php echo $readrow['fld_cust_id']; ?>" class="btn btn-success btn-xs" role="button"> Edit </a>
-                <a href="customers.php?delete=<?php echo $readrow['fld_cust_id']; ?>" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs" role="button">Delete</a>
-              </td>
-            </tr>
+            ?>
+          <tr>
+            <td><?php echo $readrow['fld_cust_id']; ?></td>
+            <td><?php echo $readrow['fld_cust_name']; ?></td>
+            <td><?php echo $readrow['fld_cust_address']; ?></td>
+            <td><?php echo $readrow['fld_cust_phone']; ?></td>
+            <td class="text-center">
+                            <?php
+                            if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
+                                ?>
+                                <a href="customers.php?edit=<?php echo $readrow['fld_cust_id']; ?>"
+                                   class="btn btn-success btn-xs" role="button"> Edit </a>
+                                <a href="customers.php?delete=<?php echo $readrow['fld_cust_id']; ?>"
+                                   onclick="return confirm('Are you sure to delete?');"
+                                   class="btn btn-danger btn-xs"
+                                   role="button">Delete</a>
+                                <?php
+                            }
+                            ?>
+                        </td>
+          </tr>
           <?php } ?>
 
         </table>
@@ -153,10 +179,11 @@ include_once 'customers_crud.php';
             $total_pages = ceil($total_records / $per_page);
             ?>
             <?php if ($page==1) { ?>
-              <li class="disabled"><span aria-hidden="true">«</span></li>
+            <li class="disabled"><span aria-hidden="true">«</span></li>
             <?php } else { ?>
-              <li><a href="customers.php?page=<?php echo $page-1 ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-              <?php
+            <li><a href="customers.php?page=<?php echo $page-1 ?>" aria-label="Previous"><span
+                  aria-hidden="true">«</span></a></li>
+            <?php
             }
             for ($i=1; $i<=$total_pages; $i++)
               if ($i == $page)
@@ -164,20 +191,22 @@ include_once 'customers_crud.php';
               else
                 echo "<li><a href=\"customers.php?page=$i\">$i</a></li>";
               ?>
-              <?php if ($page==$total_pages) { ?>
-                <li class="disabled"><span aria-hidden="true">»</span></li>
-              <?php } else { ?>
-                <li><a href="customers.php?page=<?php echo $page+1 ?>" aria-label="Previous"><span aria-hidden="true">»</span></a></li>
-              <?php } ?>
-            </ul>
-          </nav>
-        </div>
+            <?php if ($page==$total_pages) { ?>
+            <li class="disabled"><span aria-hidden="true">»</span></li>
+            <?php } else { ?>
+            <li><a href="customers.php?page=<?php echo $page+1 ?>" aria-label="Previous"><span
+                  aria-hidden="true">»</span></a></li>
+            <?php } ?>
+          </ul>
+        </nav>
       </div>
     </div>
+  </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-  </html>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
