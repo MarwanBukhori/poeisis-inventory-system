@@ -5,9 +5,11 @@ include_once 'database.php';
 if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
  
-
+if (!isset($_GET['oid']))
+    header("LOCATION: orders.php");
  
 //Create
+# if user tekan submit button addproduct then...
 if (isset($_POST['addproduct'])) {
  
   try {
@@ -31,9 +33,11 @@ if (isset($_POST['addproduct'])) {
  
   catch(PDOException $e)
   {
-      echo "Error: " . $e->getMessage();
+    $_SESSION['error'] = "Error while adding: " . $e->getMessage();
   }
-  $_GET['oid'] = $oid;
+  #$_GET['oid'] = $oid;
+  header("LOCATION: {$_SERVER['REQUEST_URI']}");
+  exit();
 }
  
 //Delete
@@ -49,13 +53,17 @@ if (isset($_GET['delete'])) {
      
     $stmt->execute();
  
-    header("Location: orders_details.php?oid=".$_GET['oid']);
+   
     }
  
   catch(PDOException $e)
   {
-      echo "Error: " . $e->getMessage();
+    $_SESSION['error'] = "Error: " . $e->getMessage();
   }
+
+  header("LOCATION: {$_SERVER['PHP_SELF']}?oid={$_GET['oid']}");
+  exit();
+
 }
  
 ?>

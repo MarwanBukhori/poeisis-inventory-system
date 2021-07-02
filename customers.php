@@ -25,10 +25,6 @@ include_once 'customers_crud.php';
 <body>
   <?php include_once 'nav_bar.php'; ?>
 
-  <?php
-if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
-    ?>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -42,7 +38,15 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
           }
           ?>
         </div>
-        <form action="customers.php" method="post" class="form-horizontal">
+
+        <?php
+            if (isset($_SESSION['error'])) {
+                echo "<p class='text-danger text-center'>{$_SESSION['error']}</p>";
+                unset($_SESSION['error']);
+            }
+            ?>
+
+        <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="form-horizontal">
           <?php
           if (isset($_GET['edit'])) {
             echo '<input type="hidden" name="cid" value="'.$editrow['fld_cust_id'].'" />';
@@ -76,9 +80,9 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone Number</label>
             <div class="col-sm-9">
-              <input name="phone" type="tel" class="form-control" id="phone" pattern="\+60\d{2}-\d{7}"
-                placeholder="+60##-#######" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_cust_phone']; ?>"
-                required />
+              <input name="phone" type="tel" class="form-control" id="phone" pattern="\+60\d{2}-(\d{7}|\d{8})$"
+                placeholder="Phone Number : +60##-#######" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_cust_phone']; ?>"
+                required /> <!--\+60\d{2}-\d{7}-->
             </div>
           </div>
 
@@ -99,7 +103,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
         </form>
       </div>
     </div>
-    <?php } ?>
+    
     <hr />
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">

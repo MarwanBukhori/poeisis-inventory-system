@@ -114,6 +114,7 @@ include_once 'orders_details_crud.php';
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-9">
                 <input name="oid" type="hidden" value="<?php echo $readrow['fld_order_num'] ?>">
+                  <!-- button store data in addproduct-->
                 <button class="btn btn-default" type="submit" name="addproduct"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Product</button>
                 <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear</button>
               </div>
