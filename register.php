@@ -37,7 +37,7 @@ if (isset($_SESSION['loggedin']))
                 <div class="form-group">
                     <label for="inputUserID">Staff ID</label>
                     <input type="text" class="form-control" id="inputUserID" name="userid"
-                           placeholder="Email address">
+                           placeholder="Staff ID">
                 </div>
 
                 <div class="form-group">
