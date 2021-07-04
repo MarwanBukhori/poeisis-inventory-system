@@ -15,7 +15,7 @@ if (!isset($_SESSION['loggedin']))
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    
 
     <style>
         .modal {
@@ -62,7 +62,7 @@ if (!isset($_SESSION['loggedin']))
             allow="autoplay;" allowfullscreen>
     </iframe>
 
-    <?php include_once 'nav_bar.php'; ?>
+    <?php include_once 'nav_bar.inc'; ?>
 
     <div class="container-fluid" style="height: 80%;display: flex;justify-content: center;align-items: center;">
         <div class="container content">
@@ -71,14 +71,14 @@ if (!isset($_SESSION['loggedin']))
                     <div class="col-md-12">
                         <h1>Poesis Animal System</h1>
                         <hr style="border-top: 1px solid transparent;"/>
-                        <p>Search product by type, price, origin or all three.</p>
+                        <p>Search product by name, type, origin or all three.</p>
                     </div>
                     <div class="col-md-offset-2 col-md-8">
                         <form action="#" method="POST" id="searchForm">
                             <div class="form-group">
                                 <input type="text" class="form-control text-center input-lg" id="inputSearch"
                                        name="search"
-                                       placeholder="ASUS MAXIMUS 93.00 Asus" autocomplete="off" required/>
+                                       placeholder="Eg. Snake Pet Malaysia" autocomplete="off" required/>
                                 <span id="helpBlock2" class="help-block"></span>
                             </div>
 

@@ -26,7 +26,7 @@
 </head>
 <body>
  
-<?php include_once 'nav_bar.php'; ?>
+<?php include_once 'nav_bar.inc'; ?>
  
 <?php
 try {

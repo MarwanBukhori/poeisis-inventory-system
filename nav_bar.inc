@@ -1,3 +1,8 @@
+<link rel="shortcut icon" type="image/x-icon" href="products/hypers logo.ico"/>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="style/nav_bar.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -8,7 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Poiesis Animal Shop</a>
+      <a class="navbar-brand" href="index.php">Poiesis Animal</a>
     </div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,6 +27,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="products.php">Products</a></li>
+            <li><a href="search.php">Catalog</a></li>
             <li><a href="customers.php">Customers</a></li>
             <li><a href="staffs.php">Staffs</a></li>
             <li><a href="orders.php">Orders</a></li>

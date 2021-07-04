@@ -9,15 +9,15 @@ if (isset($_GET['search'])) {
     $data = explode(" ", $search);
 
     // 0 - name
-    // 1 - price
-    // 2 - brand
+    // 1 - type
+    // 2 - origin
 
     $name = (isset($data[0]) ? $data[0] : '');
-    $price = (isset($data[1]) ? $data[1] : '');
-    $brand = (isset($data[2]) ? $data[2] : '');
+    $type = (isset($data[1]) ? $data[1] : '');
+    $origin = (isset($data[2]) ? $data[2] : '');
 
     try {
-        $stmt = $db->prepare("SELECT * FROM `tbl_products_a174856_pt2` WHERE fld_product_name LIKE ? OR fld_price LIKE ? OR fld_type LIKE ?");
+        $stmt = $db->prepare("SELECT * FROM `tbl_products_a174856_pt2` WHERE fld_product_name LIKE ? OR fld_type LIKE ? OR fld_origin LIKE ?");
         $stmt->execute(["%{$search}%","%{$search}%", "%{$search}%"]);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

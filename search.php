@@ -20,7 +20,7 @@ require 'database.php';
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<?php include_once 'nav_bar.php'; ?>
+<?php include_once 'nav_bar.inc'; ?>
 <?php
 if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
     ?>
@@ -34,9 +34,9 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                     <div class="col-sm-offset-2 col-sm-8">
                         <div class="form-group">
-                            <label for="inputKeyword">Keywords (Type, Price, Origin)</label>
+                            <label for="inputKeyword">Keywords (Name, Type, Origin)</label>
                             <input type="text" class="form-control" id="inputKeyword" name="search"
-                                   placeholder="Eg. Asus 949.00 LGA1151">
+                                   placeholder="Eg. Snake Pet Malaysia">
                         </div>
                     </div>
 
@@ -76,13 +76,14 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                     $keywords = explode(" ", $_POST['search']);
 
                     if (count($keywords) == 3) {
-                        $type = $keywords[0]."%";
-                        $price = $keywords[1]."%";
+                        $name = $keywords[0]."%";
+                        $type = $keywords[1]."%";
                         $origin = $keywords[2]."%";
 
-                        $stmt = $db->prepare("SELECT * FROM tbl_products_a174856_pt2 WHERE fld_type LIKE :type AND fld_price LIKE :price AND fld_origin LIKE :origin ORDER BY fld_product_id ASC");
-                        $stmt->bindParam(":brand", $brand);
-                        $stmt->bindParam(":price", $price);
+
+                        $stmt = $db->prepare("SELECT * FROM tbl_products_a174856_pt2 WHERE fld_product_name LIKE :name AND fld_type LIKE :type AND fld_origin LIKE :origin ORDER BY fld_product_id ASC");
+                        $stmt->bindParam(":name", $name);
+                        $stmt->bindParam(":type", $type);
                         $stmt->bindParam(":origin", $origin);
 
                         $stmt->execute();
@@ -91,7 +92,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                         echo "<tr><td colspan='6'>No information available. (<p class='text-danger'>Please check you search keywords.</p>)</td></tr>";
                     }
                 } else {
-                    $stmt = $db->query("SELECT * FROM tbl_products_a174856_pt2 ORDER BY fld_weight ASC LIMIT 0,10");
+                    $stmt = $db->query("SELECT * FROM tbl_products_a174856_pt2 ORDER BY fld_product_id ASC LIMIT 0,10");
                     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
 
@@ -99,11 +100,12 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                     foreach ($result as $readrow) {
                         ?>
                         <tr style="color: #AAA;">
-                            <td><?php echo $readrow['fld_product_id']); ?></td>
+                            <td><?php echo $readrow['fld_product_id']; ?></td>
                             <td><?php echo $readrow['fld_product_name']; ?></td>
-                            <td><?php echo $readrow['fld_price']; ?></td>
-                            <td><?php echo $readrow['fld_weight']; ?></td>
+                            <td>RM<?php echo $readrow['fld_price']; ?></td>
+                            <td><?php echo $readrow['fld_weight']; ?>g</td>
                             <td><?php echo $readrow['fld_origin']; ?></td>
+                            
                             <td class="text-center">
                                 <a href="products_details.php?pid=<?php echo $readrow['fld_product_id']; ?>"
                                    class="btn btn-warning btn-xs" role="button">Details</a>
@@ -126,6 +128,8 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
     </div>
 
 </div>
+
+<!-- modal for image -->
 
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
     <div class="modal-dialog" role="document">
@@ -162,7 +166,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
         const productName = button.data('name');
 
         const modal = $(this);
-        modal.find('.modal-title').text(`${productName}'s image`);
+        modal.find('.modal-title').text(`${productName}`);
         modal.find('.product-image').prop('title', `${productName}'s image`);
         modal.find('.product-image').attr('src', 'products/' + imgUrl);
     });

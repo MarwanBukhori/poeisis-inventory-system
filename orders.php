@@ -21,7 +21,7 @@ include_once 'orders_crud.php';
   <![endif]-->
 </head>
 <body>
-  <?php include_once 'nav_bar.php'; ?>
+  <?php include_once 'nav_bar.inc'; ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">

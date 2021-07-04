@@ -31,7 +31,7 @@
 
 <body>
 
-  <?php include_once 'nav_bar.php'; ?>
+  <?php include_once 'nav_bar.inc'; ?>
 
 
   <div class="container-fluid dark" style="padding-bottom: 30px;">

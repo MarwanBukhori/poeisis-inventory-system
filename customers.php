@@ -13,6 +13,9 @@ include_once 'customers_crud.php';
   <title>Poeisis Animal Shop : Customers</title>
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +26,7 @@ include_once 'customers_crud.php';
 </head>
 
 <body>
-  <?php include_once 'nav_bar.php'; ?>
+  <?php include_once 'nav_bar.inc'; ?>
 
   <div class="container-fluid">
     <div class="row">
