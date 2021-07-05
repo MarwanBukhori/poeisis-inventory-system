@@ -22,7 +22,7 @@ include_once 'orders_details_crud.php';
   </head>
   <body>
 
-    <?php include_once 'nav_bar.inc'; ?>
+    <?php include_once 'nav_bar.php'; ?>
 
     <?php
     try {

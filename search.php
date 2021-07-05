@@ -20,7 +20,7 @@ require 'database.php';
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<?php include_once 'nav_bar.inc'; ?>
+<?php include_once 'nav_bar.php'; ?>
 <?php
 if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
     ?>

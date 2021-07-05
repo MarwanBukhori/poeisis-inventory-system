@@ -62,7 +62,7 @@ if (!isset($_SESSION['loggedin']))
             allow="autoplay;" allowfullscreen>
     </iframe>
 
-    <?php include_once 'nav_bar.inc'; ?>
+    <?php include_once 'nav_bar.php'; ?>
 
     <div class="container-fluid" style="height: 80%;display: flex;justify-content: center;align-items: center;">
         <div class="container content">

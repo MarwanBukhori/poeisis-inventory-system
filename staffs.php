@@ -23,7 +23,7 @@ include_once 'staffs_crud.php';
 </head>
 
 <body>
-  <?php include_once 'nav_bar.inc'; ?>
+  <?php include_once 'nav_bar.php'; ?>
 
   <div class="container-fluid">
     <div class="row">
