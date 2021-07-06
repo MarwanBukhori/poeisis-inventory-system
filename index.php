@@ -118,7 +118,7 @@ if (!isset($_SESSION['loggedin']))
         if (val.length > 2) {
             $.ajax({
                 url: 'ajax/search.php',
-                type: 'get',
+                type: 'post',
                 dataType: 'json',
                 data: {
                     search: val

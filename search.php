@@ -31,12 +31,12 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                     <h2>Catalog: Search</h2>
                 </div>
 
-                <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+                <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
                     <div class="col-sm-offset-2 col-sm-8">
                         <div class="form-group">
-                            <label for="inputKeyword">Keywords (Name, Type, Origin)</label>
+                            <label for="inputKeyword">Search Keywords ( Name, Type, Origin )</label>
                             <input type="text" class="form-control" id="inputKeyword" name="search"
-                                   placeholder="Eg. Snake Pet Malaysia">
+                                   placeholder="Eg. Snake PET Malaysia">
                         </div>
                     </div>
 
@@ -72,8 +72,13 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                 <tbody>
                 <?php
                 $result = array();
+
+
+                
                 if (isset($_POST['search'])) {
+                    
                     $keywords = explode(" ", $_POST['search']);
+
 
                     if (count($keywords) == 3) {
                         $name = $keywords[0]."%";
@@ -89,7 +94,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                         $stmt->execute();
                         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     } else {
-                        echo "<tr><td colspan='6'>No information available. (<p class='text-danger'>Please check you search keywords.</p>)</td></tr>";
+                        echo "<tr><td colspan='6'>No information available. <p class='text-danger'>Please check your keywords.</p></td></tr>";
                     }
                 } else {
                     $stmt = $db->query("SELECT * FROM tbl_products_a174856_pt2 ORDER BY fld_product_id ASC LIMIT 0,10");
@@ -119,7 +124,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') 
                         <?php
                     }
                 } else {
-                    echo "<tr><td colspan='6'>No information available.</td></tr>";
+                    echo "<tr><td colspan='6'>No information found.</td></tr>";
                 }
                 ?>
                 </tbody>

@@ -4,17 +4,23 @@ require '../database.php';
 
 $Json = array();
 
-if (isset($_GET['search'])) {
-    $search = htmlspecialchars($_GET['search']);
+if (isset($_POST['search'])) {
+
+    $field = ['fld_product_name', 'fld_type' , 'fld_origin'];
+    $search = htmlspecialchars($_POST['search']);
     $data = explode(" ", $search);
 
+    $name = (isset($data[0]) ? $data[0] : '');
+	$type = (isset($data[1]) ? $data[1] : '');
+	$origin = (isset($data[2]) ? $data[2] : '');
+  
     // 0 - name
     // 1 - type
     // 2 - origin
-
-    $name = (isset($data[0]) ? $data[0] : '');
-    $type = (isset($data[1]) ? $data[1] : '');
-    $origin = (isset($data[2]) ? $data[2] : '');
+    
+    # check if $ is set and will return true user search
+    
+    #terniary operator, $ = data or '' 
 
     try {
         $stmt = $db->prepare("SELECT * FROM `tbl_products_a174856_pt2` WHERE fld_product_name LIKE ? OR fld_type LIKE ? OR fld_origin LIKE ?");
