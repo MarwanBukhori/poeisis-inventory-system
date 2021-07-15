@@ -1,39 +1,72 @@
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="style/main.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.php">Poiesis Animal</a>
-    </div>
+
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="products.php">Products</a></li>
-            <li><a href="search.php">Catalog</a></li>
-            <li><a href="customers.php">Customers</a></li>
-            <li><a href="staffs.php">Staffs</a></li>
-            <li><a href="orders.php">Orders</a></li>
-            <li><a href="logout.php">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="style/nav_bar.css">
+
+
+    <!-- partial:index.partial.html -->
+    <input id="hamburger" class="hamburger" type="checkbox" />
+    <label for="hamburger" class="hamburger">
+    <i></i>
+  <text>
+      <close>close</close>
+      <open>menu</open>
+    </text>
+  </label>
+
+    <nav class="primnav">
+        <ul>
+            <li>
+                <a href="products.php">
+         <i class="icon bi bi-bag-fill"></i> PRODUCT
+                </a>
+</li>
+            <li>
+                <a href="orders.php">
+                    <i class="bi bi-receipt icon"></i> ORDER
+                    <div class="tag">23</div>
+                </a>
+                
+            </li>
+
+            <li>
+                <a href="#sysadmin">
+                <i class="icon bi bi-people-fill"></i> USER
+                </a>
+                <ul class="secnav">
+                    <li>
+                        <a href="staffs.php">Staff</a>
+                    </li>
+                    <li>
+                        <a href="customers.php">Customer</a>
+                    </li>
+                 
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <user id="user">
+        <section>
+            <img src="https://randomuser.me/api/portraits/women/85.jpg" />
+            <section>
+                <name>Sarah Dekhard</name>
+                <actions><a href="index.php">Home</a> | <a href="logout.php">Logout</a></actions>
+            </section>
+        </section>
+    </user>
+
+
+   
+  
+
+
+

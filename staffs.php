@@ -175,7 +175,7 @@ include_once 'staffs_crud.php';
           <tr>
             <td><?php echo $readrow['fld_staff_id']; ?></td>
             <td><?php echo $readrow['fld_staff_name']; ?></td>
-            <td><?php echo ($readrow['fld_staff_role'] == 'admin' ? 'Administrator' : 'Normal Staff'); ?></td>
+            <td><?php echo ($readrow['fld_staff_role'] == 'admin' ? 'Administrator' : 'Staff'); ?></td>
             <td><?php echo $readrow['fld_staff_phone']; ?></td>
             <td><?php echo $readrow['fld_staff_address']; ?></td>
             <td class="text-center">

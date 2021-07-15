@@ -1,43 +1,40 @@
 <?php
   include_once 'products_crud.php';
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Poiesis Animal Shop : Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poeisis Product</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <link href="style/products.css" rel="stylesheet">
 
   <style>
     input[type="file"] {
       display: none;
     }
   </style>
-
 </head>
 
-<body>
+<body style="background-color: #0070cc;" }>
 
-  <?php include_once 'nav_bar.php'; ?>
+  <?php  include_once "nav_bar.php";?>
 
-
-  <div class="container-fluid dark" style="padding-bottom: 30px;">
+    <!-- container for form  -->
     <div class="container">
+
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+        <div class="col col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <div class="page-header">
 
             <?php
@@ -53,14 +50,13 @@
                     unset($_SESSION['error']);
                 }
                 ?>
-          </div>
 
+          </div> <!-- / page header  -->
 
-
+              
+          <!-- ----------------------------------- FORM --------------------------------------------------------- -->
           <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="form-horizontal"
             enctype="multipart/form-data">
-
-
 
             <?php
           if (isset($_GET['edit']))
@@ -71,16 +67,17 @@
 
             <!-- ID -->
             <div class="form-group">
-              <label for="productid" class="col-sm-3 control-label">ID</label>
-              <div class="col-sm-9">
+              <label for="productid" class="col-sm-3 control-label">Product ID</label>
+              <div class="col-sm-9 inputfield">
                 <input name="pid" type="text" class="form-control" id="productid" placeholder="ID"
                   value="<?php if (isset($_GET['edit'])) echo $pid;  else echo $nextid; ?>" required readonly>
               </div>
             </div>
+
             <!-- Name -->
             <div class="form-group">
-              <label for="productname" class="col-sm-3 control-label">Name</label>
-              <div class="col-sm-9">
+              <label for="productname" class="col-sm-3 control-label">Product Name</label>
+              <div class="col-sm-9 inputfield">
                 <input name="name" id="productname" type="text" class="form-control" placeholder="Product Name"
                   value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_name']; ?>" required>
               </div>
@@ -89,7 +86,7 @@
             <!-- Price -->
             <div class="form-group">
               <label for="productprice" class="col-sm-3 control-label">Price</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 inputfield">
                 <input name="price" id="productprice" type="number" class="form-control" placeholder="Price (RM)"
                   value="<?php if(isset($_GET['edit'])) echo $editrow['fld_price']; ?>" required>
               </div>
@@ -98,7 +95,7 @@
             <!-- Type -->
             <div class="form-group">
               <label for="producttype" class="col-sm-3 control-label">Type</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 inputfield">
                 <select name="type" id="producttype" class="form-control" placeholder="Animal Type" required>
                   <option value="PET"
                     <?php if(isset($_GET['edit'])) if($editrow['fld_type']=="Pet") echo "selected"; ?>>
@@ -115,7 +112,7 @@
             <!-- Weight -->
             <div class="form-group">
               <label for="productweight" class="col-sm-3 control-label">Weight</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 inputfield">
                 <input name="weight" id="productweight" type="number" class="form-control" placeholder="Weight (g)"
                   value="<?php if(isset($_GET['edit'])) echo $editrow['fld_weight']; ?>" required>
               </div>
@@ -124,7 +121,7 @@
             <!-- Origin -->
             <div class="form-group">
               <label for="productorigin" class="col-sm-3 control-label">Origin</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 inputfield">
                 <input name="origin" id="productorigin" type="text" class="form-control" placeholder="Origin"
                   value="<?php if(isset($_GET['edit'])) echo $editrow['fld_origin']; ?>" required>
               </div>
@@ -133,15 +130,44 @@
             <!-- Description -->
             <div class="form-group">
               <label for="productdesc" class="col-sm-3 control-label">Description</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 inputfield">
                 <input name="desc" id="productdesc" type="text" class="form-control" placeholder="Description"
                   value="<?php if(isset($_GET['edit'])) echo $editrow['fld_description']; ?>" required>
               </div>
             </div>
 
-             <!-- Form Button -->
+    
+            <!-- Img Upload -->
             <div class="form-group">
-              <div class="col-sm-offset-3 col-sm-9">
+            <div class="submit-img col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" style="height: 100%">
+              <div class="thumbnail dark-1 inputfield">
+                <img src="products/<?php echo(isset($_GET['edit']) ? $editrow['fld_product_image'] : '') ?>"
+                  onerror="this.onerror=null;this.src='products/no-photo.png';" id="productPhoto" alt="Product Image"
+                  style="width: 100%;height: auto;">
+                <div class="caption text-center">
+                  <h4 id="productImageTitle" style="word-break: break-all;">Product Image</h3>
+                  <p>
+                    <label class="btn btn-primary" style="width:100%; height: auto;">
+                      <input type="file" accept="image/*" name="fileToUpload" id="inputImage"
+                        onchange="loadFile(event);" />
+                      <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Browse
+                    </label>
+                    <?php
+                      if (isset($_GET['edit']) && $editrow['fld_product_image'] != '') {
+                          echo '<a href="#" class="btn btn-danger disabled" role="button">Delete</a>';
+                      }
+                    ?>
+                  </p>
+                </div> <!-- / caption -->
+              </div>  <!-- thumbnail -->
+            </div>  <!-- / col img -->
+            </div>
+
+
+
+                          <!-- Form Button -->
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9 inputfield btn-group">
                 <?php if (isset($_GET['edit'])) { ?>
                 <!--<input type="hidden" name="oldpid" value="<?php echo $editrow['fld_product_id']; ?>"> -->
                 <button class="btn btn-default" type="submit" name="update"><span class="glyphicon glyphicon-pencil"
@@ -155,49 +181,25 @@
               </div>
             </div>
 
-            <!-- Img Upload -->
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" style="height: 100%">
-              <div class="thumbnail dark-1">
-                <img src="products/<?php echo(isset($_GET['edit']) ? $editrow['fld_product_image'] : '') ?>"
-                  onerror="this.onerror=null;this.src='products/no-photo.png';" id="productPhoto" alt="Product Image"
-                  style="width: 100%;height: 225px;">
-                <div class="caption text-center">
-                  <h3 id="productImageTitle" style="word-break: break-all;">Product Image</h3>
-                  <p>
-                    <label class="btn btn-primary">
-                      <input type="file" accept="image/*" name="fileToUpload" id="inputImage"
-                        onchange="loadFile(event);" />
-                      <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Browse
-                    </label>
-                    <?php
-                      if (isset($_GET['edit']) && $editrow['fld_product_image'] != '') {
-                          echo '<a href="#" class="btn btn-danger disabled" role="button">Delete</a>';
-                      }
-                    ?>
-                  </p>
-                </div>
-              </div>
-            </div>
 
-          </form>
-
-        </div>
-      </div>
-    </div>
+            
+          </form>  <!-- /form  -->
+        </div>  <!-- / col -->
+      </div>  <!-- / row -->
+    </div>  <!-- / container  -->
 
 
-    <hr>
+  
     <!--Table-->
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <div class="row ">
+        <div class="tbl col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
           <div class="page-header">
             <h2>Products List</h2>
-          </div>
-          <table class="table table-striped table-bordered">
+          </div> 
+          <table class="table table-bordered table-hover table-striped">
 
-
-            <tr>
+            <tr id="table-header">
               <td>Product ID</td>
               <td>Name</td>
               <td>Price</td>
@@ -254,8 +256,8 @@
       $conn = null;
       ?>
           </table>
-        </div>
-      </div>
+        </div>  <!-- / col -->
+      </div>   <!-- / row  -->
 
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
