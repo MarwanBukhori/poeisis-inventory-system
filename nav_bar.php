@@ -1,7 +1,11 @@
 
 
 
+<?php
 
+$user_name = $_SESSION["username"];
+$staff_role = $_SESSION["staff_role"];
+?>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -58,11 +62,12 @@
         <section>
             <img src="https://randomuser.me/api/portraits/women/85.jpg" />
             <section>
-                <name>Sarah Dekhard</name>
+            <a id ="username" href="#" style="color:#fff; margin-left:6px; text-decoration:none;"><?php echo $user_name ; ?> ( <?php echo $staff_role ; ?> )</a>
                 <actions><a href="index.php">Home</a> | <a href="logout.php">Logout</a></actions>
             </section>
         </section>
-    </user>
+    </user> 
+
 
 
    

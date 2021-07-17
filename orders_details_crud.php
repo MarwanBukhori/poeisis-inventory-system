@@ -35,8 +35,8 @@ if (isset($_POST['addproduct'])) {
   {
     $_SESSION['error'] = "Error while adding: " . $e->getMessage();
   }
-  #$_GET['oid'] = $oid;
-  header("LOCATION: {$_SERVER['REQUEST_URI']}");
+  $_GET['oid'] = $oid;
+  header("LOCATION: {$_SERVER['PHP_SELF']}?oid={$_GET['oid']}");
   exit();
 }
  

@@ -34,7 +34,9 @@ if(isset($_POST['userid'], $_POST['password'])){
                 unset($user['fld_staff_password']);
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user'] = $user;
-
+                $_SESSION['username'] = $user['fld_staff_name'];
+                $_SESSION['staff_role'] = $user['fld_staff_role'];
+               
                 header("LOCATION: index.php");
                 exit();
             } else {

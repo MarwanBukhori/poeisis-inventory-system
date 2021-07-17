@@ -10,7 +10,7 @@ function uploadPhoto($file, $id)
         $target_dir = "products/";
         $target_file = $target_dir . basename($file["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $allowedExt = ['png', 'gif'];
+        $allowedExt = ['gif'];
     
         $newfilename = "{$id}.{$imageFileType}";
     
@@ -84,7 +84,7 @@ if (isset($_POST['create'])) {
           elseif ($uploadStatus == 1)
             $_SESSION['error'] = "Sorry, only file with below 10MB are allowed.";
           elseif ($uploadStatus == 2)
-            $_SESSION['error'] = "Sorry, only PNG & GIF files are allowed.";
+            $_SESSION['error'] = "Sorry, only GIF files are allowed.";
           elseif ($uploadStatus == 3)
             $_SESSION['error'] = "Sorry, there was an error uploading your file.";
           elseif ($uploadStatus == 4)

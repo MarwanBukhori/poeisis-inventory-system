@@ -5,6 +5,8 @@
 
 <?php
 require 'database.php';
+$user_name = $_SESSION["username"];
+$staff_role = $_SESSION["staff_role"];
 
 if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
@@ -72,15 +74,14 @@ if (!isset($_SESSION['loggedin']))
 			<div class="text">
 				<h2>Never Stop To </h2>
 				<h3>Exploring The World</h3>
-				
 
-				<form action="#" method="POST" id="searchForm">
-					<div class="form-group">
-						<input type="text" class="form-control text-center input-lg" id="inputSearch" name="search"
-							placeholder="Snake PET Argentina" autocomplete="off" required>
-						<span id="helpBlock2" class="help-block"></span>
-					</div>
-					<a type="submit" href="#">Explore</a>
+
+				<form action="#" method="POST" class="search-bar" id="searchForm">
+						<input type="text"  id="inputSearch" name="search"
+							 autocomplete="off" pattern=".*\S.*" required>
+						<button class="search-btn" type="submit">
+							<span>Search</span>
+						</button>
 				</form>
 
 			</div>
@@ -97,7 +98,7 @@ if (!isset($_SESSION['loggedin']))
 				</li>
 
 				<li>
-					<a href="#"><h2>Hi, @username</h2></a>
+					<a href="#"><h2 id="username"><?php echo $user_name ; ?> ( <?php echo $staff_role ; ?> ) </h2></a>
 				</li>
 			</ul>
 		</section>
@@ -105,7 +106,6 @@ if (!isset($_SESSION['loggedin']))
 		<div class="menu">
 			<ul>
 				<li><a href="products.php">Products</a></li>
-				<li><a href="search.php">Catalog</a></li>
 				<li><a href="customers.php">Customers</a></li>
 				<li><a href="staffs.php">Staffs</a></li>
 				<li><a href="orders.php">Orders</a></li>
@@ -118,7 +118,7 @@ if (!isset($_SESSION['loggedin']))
 
 
 	<!-- / result -->
-	
+
 	<section id="resultSection" class="container resultList" style="padding: 20px; display: none;">
 		<div class="text-center">
 			<h2>Result</h2>
@@ -133,17 +133,17 @@ if (!isset($_SESSION['loggedin']))
 				<div class="splide__progress__bar"></div>
 			</div> -->
 		<div class="container">
-  		
-		<div class="row list-item">
-		
-		
-		
-		</div>
-		<!--<div class="splide__autoplay">
+
+			<div class="row list-item">
+
+
+
+			</div>
+			<!--<div class="splide__autoplay">
 			<button class="splide__play">Play</button>
 			<button class="splide__pause">Pause</button>
 		</div> -->
-		<!--<script class="scp">
+			<!--<script class="scp">
 			var splide = new Splide('.splide', {
 				type: 'loop',
 				perPage: 2,

@@ -42,7 +42,7 @@ if (isset($_POST['update'])) {
    
   if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
     try {
-        $stmt = $conn->prepare("UPDATE tbl_orders_a174856 SET fld_staff_num = :sid, 
+        $stmt = $db->prepare("UPDATE tbl_orders_a174856 SET fld_staff_num = :sid, 
         fld_customer_num = :cid WHERE fld_order_num = :oid");
 
 $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
@@ -76,7 +76,7 @@ if (isset($_GET['delete'])) {
  
   if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
     try {
-        $stmt = $conn->prepare("DELETE FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
+        $stmt = $db->prepare("DELETE FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
         $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
 
         $oid = $_GET['delete'];
@@ -100,7 +100,7 @@ if (isset($_GET['edit'])) {
    
   if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
     try {
-        $stmt = $conn->prepare("SELECT * FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
+        $stmt = $db->prepare("SELECT * FROM tbl_orders_a174856 WHERE fld_order_num = :oid");
         $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
 
         $oid = $_GET['edit'];
