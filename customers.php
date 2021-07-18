@@ -66,7 +66,7 @@ include_once 'customers_crud.php';
             <label for="customerid" class="col-sm-3 control-label">Customer ID</label>
             <div class="col-sm-9 inputfield">
               <input name="cid" type="text" class="form-control" id="customerid" placeholder="Customer ID"
-                value="<?php echo (isset($_GET['edit']) ? $cid : $nextid); ?>" required readonly>
+                value="<?php echo (isset($_GET['edit']) ? $cid : $num); ?>" required readonly>
             </div>
           </div>
 

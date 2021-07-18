@@ -112,11 +112,12 @@ if (isset($_GET['edit'])) {
 }
 }
  
- // get next id 
-$lastid = $conn->query("SELECT MAX(fld_cust_id) AS lastid FROM tbl_customers_a174856_pt2")->fetch();
-$lastid_str = implode("",$lastid);
-$nextid = "C". substr($lastid_str, 1,3) +1 ;
+//coding ni tk perlu guna. ni untuk aku punye auto increment je
+$num = $db->query("SELECT MAX(fld_cust_id) AS cid FROM tbl_customersS_a174856_pt2")->fetch()['cid'];
 
-$conn = null;
+
+	$num = ltrim($num, 'C')+1; 
+	
+	$num = 'C'.$num
  
 ?>

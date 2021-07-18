@@ -60,7 +60,7 @@ $staff_role = $_SESSION["staff_role"];
 
     <user id="user">
         <section>
-            <img src="https://randomuser.me/api/portraits/women/85.jpg" />
+            <img src="jett-avatar.jpg" />
             <section>
             <a id ="username" href="#" style="color:#fff; margin-left:6px; text-decoration:none;"><?php echo $user_name ; ?> ( <?php echo $staff_role ; ?> )</a>
                 <actions><a href="index.php">Home</a> | <a href="logout.php">Logout</a></actions>

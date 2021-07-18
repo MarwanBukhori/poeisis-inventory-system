@@ -62,7 +62,7 @@ include_once 'staffs_crud.php';
             <div class="col-sm-9 inputfield">
               <!--input name ni penting. Nk decide source data dari form mana-->
               <input name="sid" type="text" class="form-control" id="staffid" placeholder="Staff ID"
-                value="<?php echo (isset($_GET['edit']) ? $sid : $nextid); ?>" required readonly>
+                value="<?php echo (isset($_GET['edit']) ? $sid : $num); ?>" required readonly>
             </div>
           </div>
 

@@ -9,7 +9,7 @@ $errors = array(); //* Hold error messages
 
 
 # if user logged in, go to index.php
-if (isset($_SESSION['loggedin'])){
+if (isset($_SESSION['loggedin'])){       
     header("LOCATION: index.php");
 }
 

@@ -154,12 +154,13 @@ if (isset($_GET['edit'])) {
 
 }
  
-// get next id 
-$lastid = $db->query("SELECT MAX(fld_staff_id) AS lastid FROM tbl_staffs_a174856_pt2")->fetch();
-$lastid_str = implode("",$lastid);
-$nextid = "S". substr($lastid_str, 1,3) +1 ;
+//coding ni tk perlu guna. ni untuk aku punye auto increment je
+$num = $db->query("SELECT MAX(fld_staff_id) AS sid FROM tbl_staffs_a174856_pt2")->fetch()['sid'];
 
-$db = null;
+
+	$num = ltrim($num, 'S')+1; 
+	
+	$num = 'S'.$num
  
 
 ?>

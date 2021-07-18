@@ -102,7 +102,7 @@ table {
 }
 
 thead {
-    background: #d6ecf3;
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 #tbl-search_filter input {

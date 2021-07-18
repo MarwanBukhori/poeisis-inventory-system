@@ -1,5 +1,6 @@
 <?php
   include_once 'products_crud.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,25 +52,19 @@
                 }
                 ?>
 
-                </div> <!-- / page header  -->
+                </div> <!-- / page header -->
+
+
 
 <!-- ----------------------------------- FORM --------------------------------------------------------- -->
-<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="form-horizontal"
-            enctype="multipart/form-data">
-
-            <?php
-          if (isset($_GET['edit']))
-            echo "<input type='hidden' name='pid' value='".$editrow['fld_product_id']."' />";
-          else
-            echo "<input type='hidden' name='pid' value='{$nextid}' />";
-         ?>
+<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 
             <!-- ID -->
             <div class="form-group">
-              <label for="productid" class="col-sm-3 control-label">Product ID</label>
+              <label for="pid" class="col-sm-3 control-label">Product ID</label>
               <div class="col-sm-9 inputfield">
-                <input name="pid" type="text" class="form-control" id="productid" placeholder="ID"
-                  value="<?php if (isset($_GET['edit'])) echo $pid;  else echo $nextid; ?>" required readonly>
+                <input name="pid" type="text" class="form-control" placeholder="ID"
+                  value="<?php if (isset($_GET['edit'])) echo $pid;  else echo $num; ?>"  readonly>
               </div>
             </div>
 
@@ -180,8 +175,6 @@
               </div>
             </div>
 
-
-            
           </form>  <!-- /form  -->
             </div> <!-- / col -->
         </div> <!-- / row -->

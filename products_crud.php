@@ -238,12 +238,16 @@ if (isset($_GET['edit'])) {
   }
 }
 
+//coding ni tk perlu guna. ni untuk aku punye auto increment je
+$num = $db->query("SELECT MAX(fld_product_id) AS pid FROM tbl_products_a174856_pt2")->fetch()['pid'];
 
- // get next id 
- $lastid = $db->query("SELECT MAX(fld_product_id) AS lastid FROM tbl_products_a174856_pt2")->fetch();
- $lastid_str = implode("",$lastid);
- $nextid = "P". substr($lastid_str, 1,3) +1 ;
- 
- $db = null;
+
+	$num = ltrim($num, 'P')+1; #142
+	
+	$num = 'P'.$num
+
 
 ?>
+ 
+
+
