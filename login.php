@@ -80,7 +80,7 @@ if(isset($_POST['userid'], $_POST['password'])){
 </head>
 
 <body>
- 
+<script>alert("User: S101\nPass: admin\n\nUser: S102\nPass: staff");</script>
 
 <!-- partial:index.partial.html -->
     <div class="container">
@@ -183,7 +183,7 @@ if(isset($_POST['userid'], $_POST['password'])){
         <footer>
 
         </footer>
-
+       
     </div>
     <!-- partial -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
