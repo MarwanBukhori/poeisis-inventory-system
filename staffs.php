@@ -11,8 +11,14 @@ include_once 'staffs_crud.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Poiesis Animal Shop : Staffs</title>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="style/products.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,12 +28,12 @@ include_once 'staffs_crud.php';
   <![endif]-->
 </head>
 
-<body>
+<body style="background-color: #0070cc;">
   <?php include_once 'nav_bar.php'; ?>
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="col col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div class="page-header">
           <?php
           if (isset($_GET['edit'])) {
@@ -53,7 +59,7 @@ include_once 'staffs_crud.php';
           ?>
           <div class="form-group">
             <label for="staffid" class="col-sm-3 control-label">Staff ID</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <!--input name ni penting. Nk decide source data dari form mana-->
               <input name="sid" type="text" class="form-control" id="staffid" placeholder="Staff ID"
                 value="<?php echo (isset($_GET['edit']) ? $sid : $nextid); ?>" required readonly>
@@ -62,7 +68,7 @@ include_once 'staffs_crud.php';
 
           <div class="form-group">
             <label for="fullname" class="col-sm-3 control-label">Name</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <input name="name" type="text" class="form-control" id="name" placeholder="Name"
                 value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_name']; ?>" required />
             </div>
@@ -70,7 +76,7 @@ include_once 'staffs_crud.php';
 
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone Number</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <input name="phone" type="tel" class="form-control" id="phone" pattern="\+60\d{2}-\d{7}"
                 placeholder="+60##-#######" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_phone']; ?>"
                 required />
@@ -79,7 +85,7 @@ include_once 'staffs_crud.php';
 
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Address</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <input name="address" type="text" class="form-control" id="address" placeholder="Address"
                 value="<?php if(isset($_GET['edit'])) echo $editrow['fld_staff_address']; ?>" required />
             </div>
@@ -87,7 +93,7 @@ include_once 'staffs_crud.php';
 
           <div class="form-group">
             <label for="inputEmail" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <input name="email" type="text" class="form-control" id="inputEmail" placeholder="Staff Email"
                 value="<?php if (isset($_GET['edit'])) echo $editrow['fld_staff_email']; ?>" required>
             </div>
@@ -95,7 +101,7 @@ include_once 'staffs_crud.php';
 
           <div class="form-group">
             <label for="inputEmail" class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <input name="password" type="text" class="form-control" id="inputEmail" placeholder="Staff Password"
                 value="<?php if (isset($_GET['edit'])) echo $editrow['fld_staff_password']; ?>" required>
             </div>
@@ -103,7 +109,7 @@ include_once 'staffs_crud.php';
 
           <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Role</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <select class="form-control" name="role" required>
                 <option value="staff"
                   <?php echo(isset($_GET['edit']) && $editrow['fld_staff_role'] == 'staff' ? 'selected' : ''); ?>>
@@ -119,7 +125,7 @@ include_once 'staffs_crud.php';
 
 
           <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-9">
+            <div class="col-sm-offset-3 col-sm-9 inputfield">
               <?php if (isset($_GET['edit'])) { ?>
               <input type="hidden" name="oldsid" value="<?php echo $editrow['fld_staff_id']; ?>">
               <button class="btn btn-default" type="submit" name="update"><span class="glyphicon glyphicon-pencil"
@@ -139,12 +145,12 @@ include_once 'staffs_crud.php';
     <hr />
 
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <div class="tbl col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
         <div class="page-header">
           <h2>Staff List</h2>
         </div>
-        <table class="table table-striped table-bordered">
-          <tr>
+        <table class="table table-bordered table-hover table-striped">
+          <tr id="table-header">
             <th>Staff ID</th>
             <th>Name</th>
             <th>Role</th>

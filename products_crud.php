@@ -50,7 +50,6 @@ if (isset($_POST['create'])) {
 
       if(isset($uploadStatus['status'])) {
 
-
           try {
  
              $stmt = $db->prepare("INSERT INTO tbl_products_a174856_pt2(fld_product_id, fld_product_name, fld_price, fld_type, fld_weight,

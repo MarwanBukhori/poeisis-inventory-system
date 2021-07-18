@@ -77,28 +77,32 @@ if (!isset($_SESSION['loggedin']))
 
 
 				<form action="#" method="POST" class="search-bar" id="searchForm">
-						<input type="text"  id="inputSearch" name="search"
-							 autocomplete="off" pattern=".*\S.*" required>
-						<button class="search-btn" type="submit">
-							<span>Search</span>
-						</button>
+					<input type="text" id="inputSearch" name="search" autocomplete="off" pattern=".*\S.*" required>
+					<button class="search-btn" type="submit">
+						<span>Search</span>
+					</button>
 				</form>
 
 			</div>
 
 			<ul class="social">
 				<li>
-					<a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a>
+					<a href="https://www.facebook.com/" target="_blank"><img
+							src="https://i.ibb.co/x7P24fL/facebook.png"></a>
 				</li>
 				<li>
-					<a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a>
+					<a href="https://www.twitter.com/" target="_blank"><img
+							src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a>
 				</li>
 				<li>
-					<a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a>
+					<a href="https://www.instagram.com/" target="_blank"><img
+							src="https://i.ibb.co/ySwtH4B/instagram.png"></a>
 				</li>
 
 				<li>
-					<a href="#"><h2 id="username"><?php echo $user_name ; ?> ( <?php echo $staff_role ; ?> ) </h2></a>
+					<a href="#">
+						<h2 id="username"><?php echo $user_name ; ?> ( <?php echo $staff_role ; ?> ) </h2>
+					</a>
 				</li>
 			</ul>
 		</section>
@@ -190,7 +194,7 @@ if (!isset($_SESSION['loggedin']))
 					beforeSend: function () {
 						$("body").addClass('loading');
 						input.addClass('disabled');
-						//$( ".scp" ).unbind();
+
 
 					},
 					success: function (res) {
@@ -199,25 +203,10 @@ if (!isset($_SESSION['loggedin']))
 							//  console.log(res.data);
 							$(".result-count").text(res.data.length);
 
-							//if ($('.scp')[0]){
-							//$('.splide__list').empty();
-							//$('.scp').remove();
-							//}
 							$.each(res.data, function (idx, data) {
 								if (data.fld_product_image === '')
 									data.fld_product_image = data.fld_product_id + '.png';
 
-								// $('.splide__list').append(
-								// 	`<li class="splide__slide">
-								// 	<div class="splide__slide__container text-center">
-								// 	<figure class="figure">
-								// 	<img src="products/${data.fld_product_image}" alt="${data.fld_product_name}" style="height: 200px;" class="figure-img img-fluid rounded">
-								// 	<figcaption class="figure-caption">${data.fld_product_name}</figcaption>
-								// 	</figure>
-								// 	<a href="products_details.php?pid=${data.fld_product_id}" class="btn btn-primary" role="button">View</a>
-								// 	</div>
-								// 	</li>
-								// 	`);
 
 								$('.list-item').append(`<div class="col-md-4">
                                 <div class="thumbnail thumbnail-dark">
@@ -231,23 +220,6 @@ if (!isset($_SESSION['loggedin']))
                                 </div>
                                 </div>`);
 							});
-							$(".scp").bind();
-							/*$('.splide__list').append(
-								`<script class="scp">
-								var splide = new Splide( '.splide' ,{
-									type        : 'loop',
-									perPage     : 2,
-									autoplay    : true,
-									pauseOnHover: false,
-									trimSpace : false,
-									breakpoints: {
-										640: {
-											perPage: 4,
-										},
-									},
-									focus      : 'center',
-								}).mount();
-								<\/script>`);*/
 
 							$(".resultList").show("slow", function () {
 								$("body").removeClass('loading');
@@ -270,41 +242,5 @@ if (!isset($_SESSION['loggedin']))
 			}
 		});
 	</script>
-	<!-- <script class="scp">
-							var splide = new Splide( '.splide' ,{
-								type        : 'loop',
-								perPage     : 2,
-								autoplay    : true,
-								pauseOnHover: false,
-								trimSpace : false,
-								breakpoints: {
-									640: {
-										perPage: 4,
-									},
-								},
-								//gap        : 10,
-								focus      : 'center',
-								//pagination:false
-							}).mount();
-							</script> -->
-	<!--div id="img">
-		<script type="text/javascript">
-			var bd = document.body;
-			var suns = document.querySelector("#img")
-			function rot(event) {
-				var w = window.innerWidth / 2;
-				var x = event.clientX;
-				if (x > w + 100) {
-					suns.style.transform = "perspective(1000px) rotateY(30deg)";
-				}
-				if (x > w - 100 && x < w + 100) {
-					suns.style.transform = "perspective(1000px) rotateY(0deg)";
-				}
-				if (x < w - 100) {
-					suns.style.transform = "perspective(1000px) rotateY(-30deg)";
-				}
-			}
-			bd.addEventListener("mousemove", rot);
-		</script>
-	</div-->
+
 	<script src=js/index.js> </script> </body> </html>

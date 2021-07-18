@@ -1,6 +1,6 @@
 body {
     font-family: "Montserrat", sans-serif;
-    background: #f7edd5;
+    background: #15a4dd;
 }
 
 .container {
@@ -250,7 +250,7 @@ section#formHolder {
     font-size: 12px;
     text-transform: uppercase;
     padding: 5px 30px;
-    background: #f95959;
+    background: #0070cc;
     color: #fff;
     border-radius: 30px;
     margin-right: 20px;

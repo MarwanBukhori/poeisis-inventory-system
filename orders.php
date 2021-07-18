@@ -10,8 +10,16 @@ include_once 'orders_crud.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Poeisis Animal Shop : Orders</title>
+  
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="style/products.css" rel="stylesheet">
+
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,11 +28,14 @@ include_once 'orders_crud.php';
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body>
+<body style="background-color: #0070cc;">
   <?php include_once 'nav_bar.php'; ?>
-  <div class="container-fluid">
+  
+
+  <!-- container for form -->
+  <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="col col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div class="page-header">
           <h2>Create New Order</h2>
         </div>
@@ -36,24 +47,25 @@ include_once 'orders_crud.php';
             }
             ?>
             
+            <!-- ------------------------------- FORM -------------------------------------->
         <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="form-horizontal">
           <div class="form-group">
             <label for="orderid" class="col-sm-3 control-label">Order ID</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <input name="oid" type="text" class="form-control" id="orderid" placeholder="Order ID" readonly value="<?php echo (isset($_GET['edit']) ? $_GET['edit'] : uniqid('ODR', true)); ?>">
             </div>
           </div>
 
           <div class="form-group">
             <label for="orderdate" class="col-sm-3 control-label">Order Date</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <input name="orderdate" type="text" class="form-control" id="orderdate" placeholder="Order Date" readonly value="<?php echo (isset($_GET['edit']) ? $editrow['fld_order_date'] : date('d-m-Y')); ?>">
             </div>
           </div>
 
           <div class="form-group">
             <label for="staff" class="col-sm-3 control-label">Staff</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <select name="sid" class="form-control" id="staff" required>
                 <?php
                 try {
@@ -83,7 +95,7 @@ include_once 'orders_crud.php';
 
           <div class="form-group">
             <label for="customer" class="col-sm-3 control-label">Customer</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 inputfield">
               <select name="cid" class="form-control" id="customer" required>
                 <?php
                 try {
@@ -123,19 +135,18 @@ include_once 'orders_crud.php';
                 <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear</button>
               </div>
             </div>
-
           </form>
         </div>
       </div>
       <hr />
 
       <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <div class="tbl col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
           <div class="page-header">
             <h2>Order List</h2>
           </div>
-          <table class="table table-striped table-bordered">
-            <tr>
+          <table class="table table-bordered table-hover table-striped">
+            <tr id="table-header">
               <th>Order ID</th>
               <th>Order Date</th>
               <th>Staff</th>

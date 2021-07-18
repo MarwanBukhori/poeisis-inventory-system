@@ -42,7 +42,7 @@ $staff_role = $_SESSION["staff_role"];
             </li>
 
             <li>
-                <a href="#sysadmin">
+                <a href="staffs.php">
                 <i class="icon bi bi-people-fill"></i> USER
                 </a>
                 <ul class="secnav">
