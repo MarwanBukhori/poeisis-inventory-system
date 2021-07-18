@@ -20,6 +20,13 @@ require 'database.php';
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<style>
+    body {
+    font-family: "Montserrat", sans-serif;
+    background-image: url("https://media.giphy.com/media/3ohhwNqFMnb7wZgNnq/giphy.gif");
+    color: white;
+}
+</style>
 
 </head>
 <body>

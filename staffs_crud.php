@@ -93,8 +93,6 @@ if (isset($_POST['update'])) {
 
 header("LOCATION: {$_SERVER['PHP_SELF']}");
 exit();
-
-
 }
  
 //Delete
@@ -150,8 +148,6 @@ if (isset($_GET['edit'])) {
   header("LOCATION: {$_SERVER['PHP_SELF']}");
   exit();
 }
-
-
 }
  
 //coding ni tk perlu guna. ni untuk aku punye auto increment je
