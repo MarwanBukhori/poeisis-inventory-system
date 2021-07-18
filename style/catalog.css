@@ -101,10 +101,6 @@ table {
     background-color: white;
 }
 
-thead {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
 #tbl-search_filter input {
     color: white;
 }
@@ -117,4 +113,41 @@ thead {
 #tbl-search_paginate {
     padding-top: 20px;
     color: white;
+}
+
+table tr th {
+    background: #d6ecf3;
+}
+
+.dataTables_length label {
+    color: white;
+}
+
+.dataTables_length label select {
+    color: black;
+}
+
+#tbl-search_filter label {
+    color: white;
+    margin-left: 30px;
+}
+
+#tbl-search_filter.dataTables_filter input {
+    border-radius: 10px;
+    border: white;
+    background: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-right: 30px;
+    color: black;
+}
+
+pagination>li>a,
+.pagination>li>span {
+    background-color: white
+}
+
+.pagination>li.active>a,
+.pagination>li.active>span {
+    background-color: white
 }

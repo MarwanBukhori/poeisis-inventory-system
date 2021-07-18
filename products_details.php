@@ -24,7 +24,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="background-color: #0070cc;">
  
 <?php include_once 'nav_bar.php'; ?>
  
@@ -43,10 +43,13 @@ catch(PDOException $e) {
 }
 $conn = null;
 ?>
- 
+
+ <br>
+ <br>
+ <br>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 well well-sm text-center">
+    <div style="background-color:#d6ecf3;" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 well well-sm text-center">
       <?php if ($readrow['fld_product_image'] == "" ) {
         echo "No image";
       }
@@ -56,14 +59,14 @@ $conn = null;
     </div>
     <div class="col-xs-12 col-sm-5 col-md-4">
       <div class="panel panel-default">
-      <div class="panel-heading"><strong>Product Details</strong></div>
+      <div style="background-color:#d6ecf3;" class="panel-heading"><strong>Product Details</strong></div>
       <div class="panel-body">
           Below are specifications of the product.
       </div>
       <table class="table">
         <tr>
-          <td class="col-xs-4 col-sm-4 col-md-4"><strong>Product ID</strong></td>
-          <td><?php echo $readrow['fld_product_id'] ?></td>
+          <td style="background-color:#d6ecf3;" class="col-xs-4 col-sm-4 col-md-4"><strong>Product ID</strong></td>
+          <td style="background-color:#d6ecf3;"><?php echo $readrow['fld_product_id'] ?></td>
         </tr>
         <tr>
           <td><strong>Name</strong></td>

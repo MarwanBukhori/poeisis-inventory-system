@@ -188,9 +188,9 @@ include_once 'staffs_crud.php';
               <?php
                             if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
                                 ?>
-              <a href="staffs.php?edit=<?php echo $readrow['fld_staff_id']; ?>" class="btn btn-success btn-xs"
+              <a style="margin:2px;" href="staffs.php?edit=<?php echo $readrow['fld_staff_id']; ?>" class="btn btn-success btn-xs"
                 role="button"> Edit </a>
-              <a href="staffs.php?delete=<?php echo $readrow['fld_staff_id']; ?>"
+              <a style="margin:2px;" href="staffs.php?delete=<?php echo $readrow['fld_staff_id']; ?>"
                 onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs"
                 role="button">Delete</a>
               <?php } ?>

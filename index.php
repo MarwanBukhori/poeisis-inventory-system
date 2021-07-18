@@ -75,8 +75,8 @@ if (!isset($_SESSION['loggedin']))
 				<h2>Never Stop To </h2>
 				<h3>Exploring The World</h3>
 
-
-				<form action="#" method="POST" class="search-bar" id="searchForm">
+				<br>
+				<form style="margin-top:10px; padding-top:50px;" action="#" method="POST" class="search-bar" id="searchForm">
 					<input type="text" id="inputSearch" name="search" autocomplete="off" pattern=".*\S.*" required>
 					<button class="search-btn" type="submit">
 						<span>Search</span>
@@ -101,19 +101,23 @@ if (!isset($_SESSION['loggedin']))
 
 				<li>
 					<a href="#">
-						<h2 id="username"><?php echo $user_name ; ?> ( <?php echo $staff_role ; ?> ) </h2>
+						<h2 id="username"><?php echo strtoupper($user_name) ; ?> ( <?php echo strtoupper($staff_role) ; ?> ) </h2>
 					</a>
 				</li>
 			</ul>
 		</section>
-
+		
 		<div class="menu">
-			<ul>
+			
+	
+	
+		<ul style="text-align:center;">
+				<li><img id="poiesis" src="poiesis1.png" width="300px" height="auto"></li>
 				<li><a href="products.php">Products</a></li>
-				<li><a href="customers.php">Customers</a></li>
-				<li><a href="staffs.php">Staffs</a></li>
-				<li><a href="orders.php">Orders</a></li>
-				<li><a href="logout.php">Logout</a></li>
+				<li style="margin-top:25px;" ><a href="customers.php">Customers</a></li>
+				<li style="margin-top:25px;"><a href="staffs.php">Staffs</a></li>
+				<li style="margin-top:25px;"><a href="orders.php">Orders</a></li>
+				<li style="margin-top:25px;"><a href="logout.php">Logout</a></li>
 			</ul>
 		</div>
 	</div> <!-- / testing -->

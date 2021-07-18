@@ -58,11 +58,11 @@ $staff_role = $_SESSION["staff_role"];
         </ul>
     </nav>
 
-    <user id="user">
+    <user id="user" style="padding-right: 20px; padding-top: 15px;">
         <section>
             <img src="jett-avatar.jpg" />
             <section>
-            <a id ="username" href="#" style="color:#fff; margin-left:6px; text-decoration:none;"><?php echo $user_name ; ?> ( <?php echo $staff_role ; ?> )</a>
+            <a id ="username" href="#" style="color:#fff; margin-left:6px; text-decoration:none;"><?php echo  $user_name ; ?> ( <?php echo $staff_role ; ?> )</a>
                 <actions><a href="index.php">Home</a> | <a href="logout.php">Logout</a></actions>
             </section>
         </section>

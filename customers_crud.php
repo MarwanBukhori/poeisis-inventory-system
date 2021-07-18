@@ -113,7 +113,7 @@ if (isset($_GET['edit'])) {
 }
  
 //coding ni tk perlu guna. ni untuk aku punye auto increment je
-$num = $db->query("SELECT MAX(fld_cust_id) AS cid FROM tbl_customersS_a174856_pt2")->fetch()['cid'];
+$num = $db->query("SELECT MAX(fld_cust_id) AS cid FROM tbl_customers_a174856_pt2")->fetch()['cid'];
 
 
 	$num = ltrim($num, 'C')+1; 

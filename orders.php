@@ -67,6 +67,7 @@ include_once 'orders_crud.php';
             <label for="staff" class="col-sm-3 control-label">Staff</label>
             <div class="col-sm-9 inputfield">
               <select name="sid" class="form-control" id="staff" required>
+              <option value="" selected>Please Choose</option>
                 <?php
                 try {
                   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -81,7 +82,7 @@ include_once 'orders_crud.php';
                 foreach($result as $staffrow) {
                   ?>
                   <?php if((isset($_GET['edit'])) && ($editrow['fld_staff_num']==$staffrow['fld_staff_id'])) { ?>
-                    <option value="<?php echo $staffrow['fld_staff_id']; ?>" selected><?php echo $staffrow['fld_staff_name'];?></option>
+                    <option value="<?php echo $staffrow['fld_staff_id']; ?>"><?php echo $staffrow['fld_staff_name'];?></option>
                   <?php } else { ?>
                     <option value="<?php echo $staffrow['fld_staff_id']; ?>"><?php echo $staffrow['fld_staff_name'];?></option>
                   <?php } ?>
@@ -97,6 +98,7 @@ include_once 'orders_crud.php';
             <label for="customer" class="col-sm-3 control-label">Customer</label>
             <div class="col-sm-9 inputfield">
               <select name="cid" class="form-control" id="customer" required>
+              <option value="" selected>Please Choose</option>
                 <?php
                 try {
                   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

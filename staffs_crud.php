@@ -64,9 +64,9 @@ if (isset($_POST['update'])) {
   $stmt->bindParam(':name', $name, PDO::PARAM_STR);
   $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);
   $stmt->bindParam(':address', $address, PDO::PARAM_STR);
-  $stmt->bindParam(':email', $address, PDO::PARAM_STR);
-  $stmt->bindParam(':password', $address, PDO::PARAM_STR);
-  $stmt->bindParam(':role', $address, PDO::PARAM_STR);
+  $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+  $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+  $stmt->bindParam(':role', $role, PDO::PARAM_STR);
   $stmt->bindParam(':oldsid', $oldsid, PDO::PARAM_STR);
      
   $sid = $_POST['sid'];

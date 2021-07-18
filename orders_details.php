@@ -22,11 +22,14 @@ include_once 'orders_details_crud.php';
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body style="background-color: #0070cc;">
 
     <?php include_once 'nav_bar.php'; ?>
 
     <?php
+
+    
+
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -45,12 +48,13 @@ include_once 'orders_details_crud.php';
     }
     $conn = null;
     ?>
-
+<br><br>
+<br>
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
           <div class="panel panel-default">
-            <div class="panel-heading"><strong>Order Details</strong></div>
+            <div style="background-color:#d6ecf3;" class="panel-heading"><strong>Order Details</strong></div>
             <div class="panel-body">
               Below are details of the order.
             </div>
@@ -77,12 +81,13 @@ include_once 'orders_details_crud.php';
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <div class="page-header">
-            <h2>Add a Product</h2>
+        <br>  
+        <div class="page-header">
+            <h2 style="color:white; text-align: center;">Add a Product</h2>
           </div>
           <form action="orders_details.php" method="post" class="form-horizontal" name="frmorder" id="forder" onsubmit="return validateForm()">
             <div class="form-group">
-              <label for="prd" class="col-sm-3 control-label">Product</label>
+              <label style="color:white;" for="prd" class="col-sm-3 control-label">Product</label>
               <div class="col-sm-9">
                 <select name="pid" class="form-control" id="prd">
                   <option value="">Please select</option>
@@ -108,7 +113,7 @@ include_once 'orders_details_crud.php';
               </div>
             </div>
             <div class="form-group">
-              <label for="qty" class="col-sm-3 control-label">Quantity</label>
+              <label style="color:white;" for="qty" class="col-sm-3 control-label">Quantity</label>
               <div class="col-sm-9">
                 <input name="quantity" type="number" class="form-control" id="qty" min="1">
               </div>
@@ -117,20 +122,21 @@ include_once 'orders_details_crud.php';
               <div class="col-sm-offset-3 col-sm-9">
                 <input name="oid" type="hidden" value="<?php echo $readrow['fld_order_num'] ?>">
                   <!-- button store data in addproduct-->
-                <button class="btn btn-default" type="submit" name="addproduct"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Product</button>
-                <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear</button>
+                <button style="background-color: white;" class="btn btn-default" type="submit" name="addproduct"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Product</button>
+                <button style="background-color: white;" class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear</button>
               </div>
             </div>
           </form>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <div class="page-header">
-            <h2>Products in This Order</h2>
+          <div style="text-allign:center;" class="page-header">
+            <h2 style="color: white; text-align: center;">Products in This Order</h2>
           </div>
-          <table class="table table-striped table-bordered">
-            <tr>
+          <table class="table  table-bordered">
+            <tr style="background-color:#d6ecf3;">
               <th>Order Detail ID</th>
               <th>Product</th>
               <th>Quantity</th>
@@ -154,7 +160,7 @@ include_once 'orders_details_crud.php';
             }
             foreach($result as $detailrow) {
               ?>
-              <tr>
+              <tr style="background-color: white;" >
                 <td><?php echo $detailrow['fld_order_detail_num']; ?></td>
                 <td><?php echo $detailrow['fld_product_name']; ?></td>
                 <td><?php echo $detailrow['fld_order_detail_quantity']; ?></td>
@@ -168,7 +174,7 @@ include_once 'orders_details_crud.php';
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <a href="invoice.php?oid=<?php echo $_GET['oid']; ?>" target="_blank" role="button" class="btn btn-primary btn-lg btn-block">Generate Invoice</a>
+          <a style="background-color:#d6ecf3; color: black; " href="invoice.php?oid=<?php echo $_GET['oid']; ?>" target="_blank" role="button" class="btn btn-primary btn-lg btn-block">Generate Invoice</a>
         </div>
       </div>
       <br>
