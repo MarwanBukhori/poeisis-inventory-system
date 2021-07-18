@@ -19,7 +19,7 @@ include_once 'customers_crud.php';
   <link href="css/bootstrap.min.css" rel="stylesheet">
   
   <link href="style/products.css" rel="stylesheet">
-
+  <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
   
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -154,17 +154,15 @@ include_once 'customers_crud.php';
             <td><?php echo $readrow['fld_cust_address']; ?></td>
             <td><?php echo $readrow['fld_cust_phone']; ?></td>
             <td class="text-center">
-                            <?php
-                            if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
-                                ?>
-                                <a href="customers.php?edit=<?php echo $readrow['fld_cust_id']; ?>"
+                           
+                                <a style="margin:2px;" href="customers.php?edit=<?php echo $readrow['fld_cust_id']; ?>"
                                    class="btn btn-success btn-xs" role="button"> Edit </a>
-                                <a href="customers.php?delete=<?php echo $readrow['fld_cust_id']; ?>"
+                                <a style="margin:2px;" href="customers.php?delete=<?php echo $readrow['fld_cust_id']; ?>"
                                    onclick="return confirm('Are you sure to delete?');"
                                    class="btn btn-danger btn-xs"
                                    role="button">Delete</a>
                                 <?php
-                            }
+                            
                             ?>
                         </td>
           </tr>

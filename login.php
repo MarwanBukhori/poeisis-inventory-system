@@ -65,7 +65,7 @@ if(isset($_POST['userid'], $_POST['password'])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
     <link href="style/login.css" rel="stylesheet">
-
+    <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
 
 
@@ -80,6 +80,7 @@ if(isset($_POST['userid'], $_POST['password'])){
 </head>
 
 <body>
+
 <script>alert("User: S101\nPass: admin\n\nUser: S102\nPass: staff");</script>
 
 <!-- partial:index.partial.html -->

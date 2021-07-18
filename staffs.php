@@ -17,7 +17,7 @@ include_once 'staffs_crud.php';
   
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
+  <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
   <link href="style/products.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -185,15 +185,13 @@ include_once 'staffs_crud.php';
             <td><?php echo $readrow['fld_staff_phone']; ?></td>
             <td><?php echo $readrow['fld_staff_address']; ?></td>
             <td class="text-center">
-              <?php
-                            if (isset($_SESSION['user']) && $_SESSION['user']['fld_staff_role'] == 'admin') {
-                                ?>
+             
               <a style="margin:2px;" href="staffs.php?edit=<?php echo $readrow['fld_staff_id']; ?>" class="btn btn-success btn-xs"
                 role="button"> Edit </a>
               <a style="margin:2px;" href="staffs.php?delete=<?php echo $readrow['fld_staff_id']; ?>"
                 onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs"
                 role="button">Delete</a>
-              <?php } ?>
+             
             </td>
           </tr>
           <?php } ?>

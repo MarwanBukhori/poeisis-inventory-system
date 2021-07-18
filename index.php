@@ -28,6 +28,7 @@ if (!isset($_SESSION['loggedin']))
 		href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.21/dist/css/themes/splide-sea-green.min.css">
 	<link rel="stylesheet" href="style/index.css">
 
+	<link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
 	<style type="text/css">
 		/*body{
 	 background-color: lightblue;

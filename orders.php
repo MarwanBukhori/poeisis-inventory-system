@@ -19,7 +19,7 @@ include_once 'orders_crud.php';
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <link href="style/products.css" rel="stylesheet">
-
+  <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -15,6 +15,8 @@ include_once 'orders_details_crud.php';
 
   <link href="style/order_details.css" rel="stylesheet">
 
+
+  <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

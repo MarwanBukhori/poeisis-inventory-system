@@ -18,7 +18,7 @@
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="style/catalog.css" rel="stylesheet">
-
+  <link rel="shortcut icon" type="image/jpg" href="favicon.ico" />
   <style>
     input[type="file"] {
       display: none;
