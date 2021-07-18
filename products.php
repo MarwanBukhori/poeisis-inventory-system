@@ -44,7 +44,7 @@
             echo "<h2>Create New Product</h2>";
           }
       ?>
-                    <?php
+                <?php
                 if (isset($_SESSION['error'])) {
                     echo "<p class='text-danger text-center'>{$_SESSION['error']}</p>";
                     unset($_SESSION['error']);
@@ -53,44 +53,136 @@
 
                 </div> <!-- / page header  -->
 
+<!-- ----------------------------------- FORM --------------------------------------------------------- -->
+<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="form-horizontal"
+            enctype="multipart/form-data">
 
-                <!-- ----------------------------------- FORM --------------------------------------------------------- -->
-                <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="form-horizontal"
-                    enctype="multipart/form-data">
-
-                    <?php
+            <?php
           if (isset($_GET['edit']))
             echo "<input type='hidden' name='pid' value='".$editrow['fld_product_id']."' />";
           else
             echo "<input type='hidden' name='pid' value='{$nextid}' />";
          ?>
 
-                    <!-- Name -->
-                    <div class="form-group">
-                        <label for="productname" class="col-sm-3 control-label">Search</label>
-                        <div class="col-sm-9 inputfield">
-                            <input name="search2" id="productname" type="text" class="form-control"
-                                placeholder="Product Name"
-                                value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_name']; ?>" required>
-                        </div>
-                    </div>
+            <!-- ID -->
+            <div class="form-group">
+              <label for="productid" class="col-sm-3 control-label">Product ID</label>
+              <div class="col-sm-9 inputfield">
+                <input name="pid" type="text" class="form-control" id="productid" placeholder="ID"
+                  value="<?php if (isset($_GET['edit'])) echo $pid;  else echo $nextid; ?>" required readonly>
+              </div>
+            </div>
+
+            <!-- Name -->
+            <div class="form-group">
+              <label for="productname" class="col-sm-3 control-label">Product Name</label>
+              <div class="col-sm-9 inputfield">
+                <input name="name" id="productname" type="text" class="form-control" placeholder="Product Name"
+                  value="<?php if(isset($_GET['edit'])) echo $editrow['fld_product_name']; ?>" required>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group">
+              <label for="productprice" class="col-sm-3 control-label">Price</label>
+              <div class="col-sm-9 inputfield">
+                <input name="price" id="productprice" type="number" class="form-control" placeholder="Price (RM)"
+                  value="<?php if(isset($_GET['edit'])) echo $editrow['fld_price']; ?>" required>
+              </div>
+            </div>
+
+            <!-- Type -->
+            <div class="form-group">
+              <label for="producttype" class="col-sm-3 control-label">Type</label>
+              <div class="col-sm-9 inputfield">
+                <select name="type" id="producttype" class="form-control" placeholder="Animal Type" required>
+                  <option value="PET"
+                    <?php if(isset($_GET['edit'])) if($editrow['fld_type']=="Pet") echo "selected"; ?>>
+                    PET</option>
+                  <option value="FOOD"
+                    <?php if(isset($_GET['edit'])) if($editrow['fld_type']=="Food") echo "selected"; ?>>FOOD</option>
+                  <option value="SUPPLY"
+                    <?php if(isset($_GET['edit'])) if($editrow['fld_type']=="Supply") echo "selected"; ?>>SUPPLY
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Weight -->
+            <div class="form-group">
+              <label for="productweight" class="col-sm-3 control-label">Weight</label>
+              <div class="col-sm-9 inputfield">
+                <input name="weight" id="productweight" type="number" class="form-control" placeholder="Weight (g)"
+                  value="<?php if(isset($_GET['edit'])) echo $editrow['fld_weight']; ?>" required>
+              </div>
+            </div>
+
+            <!-- Origin -->
+            <div class="form-group">
+              <label for="productorigin" class="col-sm-3 control-label">Origin</label>
+              <div class="col-sm-9 inputfield">
+                <input name="origin" id="productorigin" type="text" class="form-control" placeholder="Origin"
+                  value="<?php if(isset($_GET['edit'])) echo $editrow['fld_origin']; ?>" required>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+              <label for="productdesc" class="col-sm-3 control-label">Description</label>
+              <div class="col-sm-9 inputfield">
+                <input name="desc" id="productdesc" type="text" class="form-control" placeholder="Description"
+                  value="<?php if(isset($_GET['edit'])) echo $editrow['fld_description']; ?>" required>
+              </div>
+            </div>
+
+    
+            <!-- Img Upload -->
+            <div class="form-group">
+            <div class="submit-img col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" style="height: 100%">
+              <div class="thumbnail dark-1 inputfield">
+                <img src="products/<?php echo(isset($_GET['edit']) ? $editrow['fld_product_image'] : '') ?>"
+                  onerror="this.onerror=null;this.src='products/no-photo.png';" id="productPhoto" alt="Product Image"
+                  style="width: 100%;height: auto;">
+                <div class="caption text-center">
+                  <h4 id="productImageTitle" style="word-break: break-all;">Product Image</h3>
+                  <p>
+                    <label class="btn btn-primary" style="width:100%; height: auto;">
+                      <input type="file" accept="image/*" name="fileToUpload" id="inputImage"
+                        onchange="loadFile(event);" />
+                      <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Browse
+                    </label>
+                    <?php
+                      if (isset($_GET['edit']) && $editrow['fld_product_image'] != '') {
+                          echo '<a href="#" class="btn btn-danger disabled" role="button">Delete</a>';
+                      }
+                    ?>
+                  </p>
+                </div> <!-- / caption -->
+              </div>  <!-- thumbnail -->
+            </div>  <!-- / col img -->
+            </div>
 
 
 
-                    <!-- Form Button -->
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9 inputfield btn-group">
+                          <!-- Form Button -->
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9 inputfield btn-group">
+                <?php if (isset($_GET['edit'])) { ?>
+                <!--<input type="hidden" name="oldpid" value="<?php echo $editrow['fld_product_id']; ?>"> -->
+                <button class="btn btn-default" type="submit" name="update"><span class="glyphicon glyphicon-pencil"
+                    aria-hidden="true"></span> Update</button>
+                <?php } else { ?>
+                <button class="btn btn-default" type="submit" name="create"><span class="glyphicon glyphicon-plus"
+                    aria-hidden="true"></span> Create</button>
+                <?php } ?>
+                <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase"
+                    aria-hidden="true"></span> Clear</button>
+              </div>
+            </div>
 
 
-                            <button class="btn btn-default" type="submit" name="search2"><span
-                                    class="glyphicon glyphicon-plus" aria-hidden="true"></span> Search</button>
-
-                        </div>
-                    </div>
-
-
-
-                </form> <!-- /form  -->
+            
+          </form>  <!-- /form  -->
             </div> <!-- / col -->
         </div> <!-- / row -->
     </div> <!-- / container  -->
